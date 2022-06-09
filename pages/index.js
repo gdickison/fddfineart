@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Image from 'next/image'
+import HeroBanner from '../src/components/HeroBanner'
 
 export default function Home() {
   return (
@@ -11,9 +11,7 @@ export default function Home() {
       </Head>
 
       <main>
-        <h1>
-          Forrest Dickison Fine Art & Illustration
-        </h1>
+        <HeroBanner/>
       </main>
       <footer>
         <h1>Footer</h1>
