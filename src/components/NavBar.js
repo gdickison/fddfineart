@@ -2,13 +2,12 @@ import Link from "next/link"
 
 const NavBar = () => {
   const navMenuItems = [
-    'About the Artist',
-    'Works',
+    'Fine Art',
+    'Illustration',
     'Galleries',
     'Contact the Artist',
-    'Newsletter',
-    'Menu Item',
-    'Menu Item'
+    'About',
+    'Newsletter'
   ]
 
   return (
