@@ -1,7 +1,12 @@
-import Head from 'next/head'
-import HeroBanner from '../src/components/HeroBanner'
+import { client } from '../lib/client'
 
-export default function Home() {
+import Head from 'next/head'
+import HeroBanner from '../components/HeroBanner'
+import ProductCategories from '../components/ProductCategories'
+import Footer from '../components/Footer'
+
+export default function Home({categories}) {
+  console.log('categories', categories)
   return (
     <div>
       <Head>
@@ -13,10 +18,21 @@ export default function Home() {
       <main>
         <HeroBanner/>
       </main>
+      <div>
+        <ProductCategories/>
+      </div>
       <footer>
-        <h1>Footer</h1>
-
+        <Footer/>
       </footer>
     </div>
   )
+}
+
+export const getServerSideProps = async () => {
+  const query = '*[_type == "category"]'
+  const categories = await client.fetch(query)
+
+  return {
+    props: {categories}
+  }
 }
