@@ -19,7 +19,9 @@ export default function Home({categories}) {
         <HeroBanner/>
       </main>
       <div>
-        <ProductCategories/>
+        <ProductCategories
+          categories={categories}
+        />
       </div>
       <footer>
         <Footer/>
@@ -29,7 +31,13 @@ export default function Home({categories}) {
 }
 
 export const getServerSideProps = async () => {
-  const query = '*[_type == "category"]'
+  const query = `*[_type == "category"]{
+    _id,
+    "imageUrl": image.asset->url,
+    title,
+    slug,
+    description
+  }`
   const categories = await client.fetch(query)
 
   return {
