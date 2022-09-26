@@ -1,3 +1,5 @@
+import { array } from "prop-types";
+
 export default {
   name: 'category',
   title: 'Category',
@@ -29,6 +31,17 @@ export default {
       name: 'description',
       title: 'Description',
       type: 'text'
+    },
+    {
+      name: 'products',
+      title: 'Products In Category',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: {type: 'product'}
+        }
+      ]
     }
   ]
 }

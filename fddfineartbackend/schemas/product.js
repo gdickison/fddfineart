@@ -9,8 +9,8 @@ export default {
       type: 'string'
     },
     {
-      name: 'image',
-      title: 'Image',
+      name: 'images', //TODO: should the product have only one image, and leave multiple images for the variant (i.e., one image per variant)?
+      title: 'Images',
       type: 'array',
       of: [{ type: 'image'}],
       options: {
@@ -27,8 +27,8 @@ export default {
       }
     },
     {
-      name: 'productVariant',
-      title: 'Product Variant',
+      name: 'product_variants',
+      title: 'Product Variants',
       type: 'array',
       of: [{ type: 'productVariant' }]
     },
@@ -55,8 +55,8 @@ export default {
       ]
     },
     {
-      name: 'body',
-      title: 'Body',
+      name: 'description',
+      title: 'Description',
       type: 'array',
       of: [{ type: 'block' }]
     }

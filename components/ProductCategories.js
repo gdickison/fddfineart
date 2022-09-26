@@ -2,8 +2,6 @@
 import Link from "next/link"
 
 export default function ProductCategories({categories}) {
-  console.log('categories 2', categories)
-
   return (
     <div>
 
@@ -13,7 +11,7 @@ export default function ProductCategories({categories}) {
         <div className="mt-6 grid grid-cols-1 gap-y-4 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-2">
           {categories.map((category, idx) => (
             <div key={idx} className="group relative">
-              <Link href={`/categories/${category.slug.current}`}>
+              <Link href={`/product-collection/${category.slug.current}`}>
                 <div className="hover:cursor-pointer">
                   <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none hover:cursor-pointer">
                       <img

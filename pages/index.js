@@ -6,7 +6,6 @@ import ProductCategories from '../components/ProductCategories'
 import Footer from '../components/Footer'
 
 export default function Home({categories}) {
-  console.log('categories', categories)
   return (
     <div>
       <Head>
@@ -36,7 +35,8 @@ export const getServerSideProps = async () => {
     "imageUrl": image.asset->url,
     title,
     slug,
-    description
+    description,
+    products[]->{tags}
   }`
   const categories = await client.fetch(query)
 
