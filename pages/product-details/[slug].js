@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import { client } from "../../lib/client";
 import ProductDetails from "../../components/ProductDetails";
 import HeroBanner from "../../components/HeroBanner";
+import Footer from "../../components/Footer"
 
 const ProductDetailsPage = ({productDetails}) => {
 
@@ -13,6 +14,7 @@ const ProductDetailsPage = ({productDetails}) => {
       <ProductDetails
         productDetails={productDetails}
       />
+      <Footer/>
     </div>
   )
 }
