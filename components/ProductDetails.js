@@ -6,7 +6,7 @@ const ProductDetails = ({productDetails}) => {
   const [selectedFrame, setSelectedFrame] = useState(null)
   const [selectedSize, setSelectedSize] = useState(null)
   const [selectedMedia, setSelectedMedia] = useState(null)
-  const [quantity, setQuantity] = useState(1)
+  const [quantity, setQuantity] = useState(0)
 
   const handleOptionChange = e => {
     e.preventDefault()
@@ -35,7 +35,7 @@ const ProductDetails = ({productDetails}) => {
 
   const subtractQuantity = e => {
     e.preventDefault()
-    if(quantity > 1){
+    if(quantity > 0){
       setQuantity(quantity - 1)
     }
   }
@@ -103,14 +103,21 @@ const ProductDetails = ({productDetails}) => {
           </div>
         </div>
         <div className="flex justify-center w-1/5">
-            <svg className="fill-current text-gray-100 w-3" viewBox="0 0 448 512" onClick={subtractQuantity}>
+          <span className="flex items-center justify-center w-12 h-12 group hover:cursor-pointer" onClick={subtractQuantity}>
+            <svg className="fill-current text-gray-100 w-3 group-active:scale-150" viewBox="0 0 448 512">
               <path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/>
             </svg>
-            <input className="mx-2 border text-center w-8 text-gray-800" type="text" value={quantity} readOnly></input>
-            <svg className="fill-current text-gray-100 w-3" viewBox="0 0 448 512" onClick={addQuantity}>
+          </span>
+          <span className="flex justify-center items-center bg-white mx-2 border w-12 h-12 text-gray-800">{quantity}</span>
+          <span className="flex items-center justify-center w-12 h-12 group hover:cursor-pointer" onClick={addQuantity}>
+            <svg className="fill-current text-gray-100 w-3 group-active:scale-150" viewBox="0 0 448 512">
               <path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/>
             </svg>
-          </div>
+          </span>
+        </div>
+        <div>
+          <button type="button" className="px-8 py-3 font-semibold rounded bg-gray-100 text-gray-800">Add to Cart</button>
+        </div>
       </div>
     </div>
   )
