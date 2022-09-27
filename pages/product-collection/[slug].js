@@ -2,38 +2,40 @@
 import { useRouter } from "next/router";
 import { client } from "../../lib/client";
 import Link from "next/link";
+import ProductCollection from "../../components/ProductCollection";
 
 const ProductCollectionPage = ({products}) => {
   const router = useRouter()
   const { slug } = router.query
 
   return (
-    <div>
-      <h1 className="text-3xl text-center">Category: {slug.charAt(0).toUpperCase() + slug.slice(1)}</h1>
-      {products && products.map((product, idx) => {
-        return(
-          <div key={idx} >
-            <div key={product._id}>
-              <Link href={{
-                pathname: '/product-details/[slug]',
-                query: {slug: product.slug.current}
-              }}>
-                <div>
-                  <h1 className="text-white">{product.title}</h1>
-                  <img className="h-96" src={product.images[0]} alt={product.title} />
-                </div>
-              </Link>
-            </div>
-          </div>
-        )
-      })}
-    </div>
+    <ProductCollection
+      slug={slug}
+      products={products}
+    />
   )
 }
 
 export default ProductCollectionPage
 
-export const getServerSideProps = async (context) => {
+export const getStaticPaths = async () => {
+  const categories = await client.fetch(`*[_type == "category"] {
+    slug {
+      current
+    }
+  }`)
+
+  const paths = categories.map(category => {
+    return {params: {slug: category.slug.current}}
+  })
+
+  return {
+    paths,
+    fallback: 'blocking'
+  }
+}
+
+export const getStaticProps = async (context) => {
   const products = await client.fetch(`*[_type == "category" && slug.current == "${context.params.slug}"]{
     _id,
     title,

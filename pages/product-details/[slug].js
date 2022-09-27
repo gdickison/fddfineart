@@ -1,25 +1,36 @@
 import { useRouter } from "next/router";
 import { client } from "../../lib/client";
+import ProductDetails from "../../components/ProductDetails";
 
 const ProductDetailsPage = ({productDetails}) => {
 
   return (
-    <div>
-      {productDetails && productDetails.map(product => {
-        return (
-          <div key={product._id}>
-            <p>Product Details for {product.title} Go Here</p>
-          </div>
-        )
-      })
-      }
-    </div>
+    <ProductDetails
+      productDetails={productDetails}
+    />
   )
 }
 
 export default ProductDetailsPage
 
-export const getServerSideProps = async (context) => {
+export const getStaticPaths = async () => {
+  const products = await client.fetch(`*[_type == "product"] {
+    slug {
+      current
+    }
+  }`)
+
+  const paths = products.map(product => {
+    return {params: {slug: product.slug.current}}
+  })
+
+  return {
+    paths,
+    fallback: 'blocking'
+  }
+}
+
+export const getStaticProps = async (context) => {
   const productDetails = await client.fetch(`*[_type == "product" && slug.current == "${context.params.slug}"]{
     _id,
     title,
@@ -45,6 +56,7 @@ export const getServerSideProps = async (context) => {
     },
     "description": description[].children[].text
   }`)
+  .then(data => data[0])
 
   return {
     props: {productDetails}
