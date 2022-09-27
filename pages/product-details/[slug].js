@@ -1,13 +1,19 @@
 import { useRouter } from "next/router";
 import { client } from "../../lib/client";
 import ProductDetails from "../../components/ProductDetails";
+import HeroBanner from "../../components/HeroBanner";
 
 const ProductDetailsPage = ({productDetails}) => {
 
   return (
-    <ProductDetails
-      productDetails={productDetails}
-    />
+    <div>
+      <main>
+        <HeroBanner/>
+      </main>
+      <ProductDetails
+        productDetails={productDetails}
+      />
+    </div>
   )
 }
 

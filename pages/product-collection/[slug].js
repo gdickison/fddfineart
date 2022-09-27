@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { useRouter } from "next/router";
 import { client } from "../../lib/client";
-import Link from "next/link";
+import HeroBanner from "../../components/HeroBanner";
 import ProductCollection from "../../components/ProductCollection";
 
 const ProductCollectionPage = ({products}) => {
@@ -9,10 +9,15 @@ const ProductCollectionPage = ({products}) => {
   const { slug } = router.query
 
   return (
-    <ProductCollection
-      slug={slug}
-      products={products}
-    />
+    <div>
+      <main>
+        <HeroBanner/>
+      </main>
+      <ProductCollection
+        slug={slug}
+        products={products}
+      />
+    </div>
   )
 }
 

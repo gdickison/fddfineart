@@ -1,13 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link"
-import HeroBanner from "./HeroBanner"
 
 const ProductCollection = ({slug, products}) => {
   return (
     <div>
-      <main>
-        <HeroBanner/>
-      </main>
       <h1 className="text-3xl text-center font-thin">Category: {slug.charAt(0).toUpperCase() + slug.slice(1)}</h1>
       <div className="flex justify-evenly p-6">
         {products && products.map((product, idx) => {
