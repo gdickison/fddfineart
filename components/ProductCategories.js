@@ -1,54 +1,70 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link"
+import { useState } from "react"
+import ProductModal from "./ProductModal"
 
 export default function ProductCategories({categories}) {
+  const [showModal, setShowModal] = useState(false)
+  const [modalContents, setModalContents] = useState()
+
+  const openModal = (e, id, title, image, description, slug) => {
+    e.preventDefault()
+    setShowModal(true)
+    setModalContents({id, title, image, description, slug})
+  }
+
+  const closeModal = e => {
+    e.preventDefault()
+    setShowModal(false)
+  }
+
   return (
-    <section className="flex flex-wrap max-w-[1170px] mx-auto">
-      {categories.map((category, idx) => (
-        <Link key={idx} href={`/product-collection/${category.slug.current}`}>
-        <figure className="flex grow hover-effect">
-          <img
-            src={category.imageUrl}
-            alt={category.title}
-            className="grow h-72 m-2 object-center object-cover hover:cursor-pointer"
-          />
-          <figurecaption>
-            <div className="caption-container hover:cursor-pointer">
-              <h4 className="text-xl">
-                {category.title}
-              </h4>
-              <p>
-                32 x 40
-              </p>
-              <p>
-                Original - Sold
-              </p>
-              <p>
-                Print - Available
-              </p>
-            </div>
-          </figurecaption>
-        </figure>
-        </Link>
-      ))}
-    </section>
+    <div>
+      <section className="flex flex-wrap max-w-[1170px] mx-auto">
+        {categories.map((category, idx) => (
+          <>
+          {/* <Link key={idx} href={`/product-collection/${category.slug.current}`}> */}
+          <figure
+            key={idx}
+            className="flex grow hover-effect"
+            onClick={e => openModal(e, category.id, category.title, category.imageUrl, category.description, category.slug.current)}
+          >
+            <img
+              src={category.imageUrl}
+              alt={category.title}
+              className="grow h-72 m-2 object-center object-cover hover:cursor-pointer"
+            />
+            <figurecaption>
+              <div className="caption-container hover:cursor-pointer">
+                <h4 className="text-xl">
+                  {category.title}
+                </h4>
+                <p>
+                  32 x 40
+                </p>
+                <p>
+                  Original - Sold
+                </p>
+                <p>
+                  Print - Available
+                </p>
+              </div>
+            </figurecaption>
+          </figure>
+          {/* </Link> */}
+          </>
+        ))}
+      </section>
+      {showModal &&
+        <ProductModal
+          id={modalContents.id}
+          title={modalContents.title}
+          image={modalContents.image}
+          description={modalContents.description}
+          slug={modalContents.slug}
+          closeModal={closeModal}
+        />
+      }
+    </div>
   )
 }
-
-
-// hover section from shopify
-
-{/* <figure class="hover-effect">
-            <img class="picture" src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">
-            <figurecaption class="card-body">
-                <div class="caption-container">
-                    <h4>
-                      {{ product.title }}
-                    </h4>
-                    <p>
-                      from {{ product.price | money }}
-                    </p>
-                    {% unless product.available %}<br><strong>SOLD OUT!</strong>{% endunless %}
-                </div>
-            </figurecaption>
-        </figure> */}

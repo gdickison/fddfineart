@@ -25,7 +25,7 @@ export default function Home({categories}) {
 
 export const getServerSideProps = async () => {
   const query = `*[_type == "category"] | order(order){
-    _id,
+    "id": _id,
     "imageUrl": image.asset->url,
     title,
     slug,
