@@ -1,6 +1,6 @@
 export default {
-  name: 'category',
-  title: 'Category',
+  name: 'shows',
+  title: 'Shows',
   type: 'document',
   fields: [
     {
@@ -31,18 +31,18 @@ export default {
       type: 'text'
     },
     {
-      name: 'order',
-      title: 'Order',
-      type: 'number'
+      name: 'is_current',
+      title: 'Is this the current show?',
+      type: 'boolean'
     },
     {
-      name: 'products',
-      title: 'Products In Category',
+      name: 'paintings',
+      title: 'Paintings in Show',
       type: 'array',
       of: [
         {
           type: 'reference',
-          to: {type: 'product'}
+          to: {type: 'paintings'}
         }
       ]
     }

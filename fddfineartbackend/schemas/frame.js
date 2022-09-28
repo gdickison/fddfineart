@@ -17,6 +17,11 @@ export default {
       name: 'image',
       title: 'Image',
       type: 'image'
+    },
+    {
+      name: 'price',
+      title: 'Price',
+      type: 'number'
     }
   ]
 }

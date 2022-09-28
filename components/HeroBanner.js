@@ -8,7 +8,7 @@ const HeroBanner = () => {
         <div className="overflow-visible w-full py-0 relative">
           <div className="mb-4 pl-4">
           <Link href="/">
-            <a className="text-4xl font-thin tracking-widest uppercase">Forrest Dickison Fine Art</a>
+            <a className="text-4xl font-thin tracking-widest uppercase text-black">Forrest Dickison Fine Art</a>
           </Link>
           </div>
           <NavBar/>

@@ -1,6 +1,6 @@
 export default {
-  name: 'category',
-  title: 'Category',
+  name: 'paintings',
+  title: 'Paintings',
   type: 'document',
   fields: [
     {
@@ -9,8 +9,8 @@ export default {
       type: 'string'
     },
     {
-      name: 'image',
-      title: 'Image',
+      name: 'images', //TODO: should the product have only one image, and leave multiple images for the variant (i.e., one image per variant)?
+      title: 'Images',
       type: 'image',
       options: {
         hotspot: true
@@ -26,6 +26,12 @@ export default {
       }
     },
     {
+      name: 'tags',
+      title: 'Tags',
+      type: 'array',
+      of: [{ type: 'string' }]
+    },
+    {
       name: 'description',
       title: 'Description',
       type: 'text'
@@ -34,17 +40,6 @@ export default {
       name: 'order',
       title: 'Order',
       type: 'number'
-    },
-    {
-      name: 'products',
-      title: 'Products In Category',
-      type: 'array',
-      of: [
-        {
-          type: 'reference',
-          to: {type: 'product'}
-        }
-      ]
     }
   ]
 }

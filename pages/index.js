@@ -3,7 +3,8 @@ import Head from 'next/head'
 import ProductCategories from '../components/ProductCategories'
 import Footer from '../components/Footer'
 
-export default function Home({categories}) {
+export default function Home({categories, shows}) {
+console.log('shows', shows)
   return (
     <div>
       <Head>
@@ -34,7 +35,18 @@ export const getServerSideProps = async () => {
   }`
   const categories = await client.fetch(query)
 
+  const shows = await client.fetch(
+    `*[_type == "shows" && is_current == true]{
+      "id": _id,
+      "imageUrl": image.asset->url,
+      title,
+      slug,
+      description,
+      paintings
+    }`
+  )
+
   return {
-    props: {categories}
+    props: {categories, shows}
   }
 }

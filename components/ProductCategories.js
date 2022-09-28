@@ -22,8 +22,6 @@ export default function ProductCategories({categories}) {
     <div>
       <section className="flex flex-wrap max-w-[1170px] mx-auto">
         {categories.map((category, idx) => (
-          <>
-          {/* <Link key={idx} href={`/product-collection/${category.slug.current}`}> */}
           <figure
             key={idx}
             className="flex grow hover-effect"
@@ -51,8 +49,6 @@ export default function ProductCategories({categories}) {
               </div>
             </figurecaption>
           </figure>
-          {/* </Link> */}
-          </>
         ))}
       </section>
       {showModal &&
