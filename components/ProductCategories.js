@@ -10,7 +10,7 @@ export default function ProductCategories({categories}) {
           <img
             src={category.imageUrl}
             alt={category.title}
-            className="grow h-72 m-2 object-center object-cover hover:opacity-50 hover:cursor-pointer"
+            className="grow h-72 m-2 object-center object-cover hover:cursor-pointer"
           />
           <figurecaption>
             <div className="caption-container hover:cursor-pointer">

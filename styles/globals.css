@@ -69,3 +69,7 @@ figure.hover-effect:hover .picture {
   opacity: .25;
   /* transform: scale(1.1); */
 }
+
+figure.hover-effect:hover > img {
+  opacity: .50;
+}
