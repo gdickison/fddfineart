@@ -32,7 +32,7 @@ const NavBar = () => {
           return (
               <Link key={item.itemTitle} href={item.itemLink}>
                 <li  className="flex items-center h-full px-6 whitespace-nowrap relative text-gray-600 transition ease hover:bg-gray-100 duration-200 hover:cursor-pointer">
-                  <a className="font-base font-thin uppercase tracking-wide relative block">
+                  <a className="font-libre uppercase tracking-wide relative block">
                     {item.itemTitle}
                   </a>
                 </li>

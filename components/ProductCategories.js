@@ -33,10 +33,12 @@ export default function ProductCategories({categories}) {
               className="grow h-72 m-2 object-center object-cover hover:cursor-pointer"
             />
             <figurecaption>
-              <div className="caption-container hover:cursor-pointer">
+              <div className="caption-container hover:cursor-pointer font-libre">
                 <h4 className="text-xl">
                   {category.title}
                 </h4>
+                <div className="text-sm">
+
                 <p>
                   32 x 40
                 </p>
@@ -46,6 +48,7 @@ export default function ProductCategories({categories}) {
                 <p>
                   Print - Available
                 </p>
+                </div>
               </div>
             </figurecaption>
           </figure>
