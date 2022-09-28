@@ -33,6 +33,11 @@ export default {
       type: 'text'
     },
     {
+      name: 'order',
+      title: 'Order',
+      type: 'number'
+    },
+    {
       name: 'products',
       title: 'Products In Category',
       type: 'array',

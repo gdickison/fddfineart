@@ -30,7 +30,7 @@ export default function Home({categories}) {
 }
 
 export const getServerSideProps = async () => {
-  const query = `*[_type == "category"]{
+  const query = `*[_type == "category"] | order(order){
     _id,
     "imageUrl": image.asset->url,
     title,
