@@ -1,16 +1,11 @@
-import { useRouter } from "next/router";
 import { client } from "../../lib/client";
 import ProductDetails from "../../components/ProductDetails";
-import HeroBanner from "../../components/HeroBanner";
 import Footer from "../../components/Footer"
 
 const ProductDetailsPage = ({productDetails}) => {
 
   return (
     <div>
-      <main>
-        <HeroBanner/>
-      </main>
       <ProductDetails
         productDetails={productDetails}
       />

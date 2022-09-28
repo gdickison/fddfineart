@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { useRouter } from "next/router";
 import { client } from "../../lib/client";
-import HeroBanner from "../../components/HeroBanner";
 import ProductCollection from "../../components/ProductCollection";
 
 const ProductCollectionPage = ({products}) => {
@@ -10,9 +9,6 @@ const ProductCollectionPage = ({products}) => {
 
   return (
     <div>
-      <main>
-        <HeroBanner/>
-      </main>
       <ProductCollection
         slug={slug}
         products={products}

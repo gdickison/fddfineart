@@ -20,3 +20,52 @@ a {
 * {
   box-sizing: border-box;
 }
+
+
+/* hover code from shopify */
+
+figure {
+  /* display: inline-block; */
+  /* overflow: hidden; */
+  position: relative;
+}
+
+figure.hover-effect {
+  /* background: rgba(0, 0, 0, 0.7); */
+  margin: 0;
+}
+
+figure img {
+  /* display: block; */
+  transition: .5s ease-in-out;
+}
+
+figurecaption {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+figure.hover-effect .caption-container {
+  width: 150px;
+  opacity: 0;
+  padding-top: 20px;
+  padding-left: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate3d(0,20px,0);
+  transition: opacity 1s,transform 1s;
+  text-align: left;
+  color: #fff;
+}
+
+figure.hover-effect:hover .caption-container {
+  opacity: 1;
+  transform: translate3d(0,0,0);
+}
+
+figure.hover-effect:hover .picture {
+  opacity: .25;
+  /* transform: scale(1.1); */
+}
