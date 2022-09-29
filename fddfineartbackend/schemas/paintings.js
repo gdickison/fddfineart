@@ -9,8 +9,8 @@ export default {
       type: 'string'
     },
     {
-      name: 'images', //TODO: should the product have only one image, and leave multiple images for the variant (i.e., one image per variant)?
-      title: 'Images',
+      name: 'image', //TODO: should the product have only one image, and leave multiple images for the variant (i.e., one image per variant)?
+      title: 'Image',
       type: 'image',
       options: {
         hotspot: true

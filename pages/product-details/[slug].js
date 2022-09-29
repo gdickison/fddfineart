@@ -17,7 +17,7 @@ const ProductDetailsPage = ({productDetails}) => {
 export default ProductDetailsPage
 
 export const getStaticPaths = async () => {
-  const products = await client.fetch(`*[_type == "product"] {
+  const products = await client.fetch(`*[_type == "paintings"] {
     slug {
       current
     }
@@ -34,30 +34,13 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async (context) => {
-  const productDetails = await client.fetch(`*[_type == "product" && slug.current == "${context.params.slug}"]{
-    _id,
+  const productDetails = await client.fetch(`*[_type == "paintings" && slug.current == "${context.params.slug}"]{
+    "id": _id,
     title,
-    "images": images[].asset->url,
-    "product_variants": product_variants[]{
-      "id": _key,
-      "title": title,
-      "frame": frame[0]->style,
-      "media": media[0]->style,
-      "size": size->size,
-      "price": price,
-      "images": images[].asset->url
-    },
+    "image": image.asset->url,
     slug,
-    blurb,
-    categories[]->{
-      "slug": slug.current
-    },
-    description[]{
-      children[]{
-        text
-      }
-    },
-    "description": description[].children[].text
+    tags,
+    description
   }`)
   .then(data => data[0])
 
