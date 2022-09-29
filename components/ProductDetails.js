@@ -34,8 +34,8 @@ const ProductDetails = ({productDetails, frameOptions, sizeOptions, mediaOptions
   return (
     <div>
       <section className="text-gray-600 body-font">
-        <div className="container mx-auto">
-          <div className="mx-auto flex gap-8">
+        <div className="container mx-auto max-w-[1400px]">
+          <div className="mx-auto flex flex-col md:flex-row gap-16">
             <div className="w-1/2 m-auto">
               <img  src={image} alt={title} />
             </div>

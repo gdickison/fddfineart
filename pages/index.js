@@ -1,6 +1,5 @@
 import { client } from '../lib/client'
 import PaintingsInShow from '../components/PaintingsInShow'
-import Footer from '../components/Footer'
 
 export default function Home({show}) {
   return (
@@ -10,9 +9,6 @@ export default function Home({show}) {
           paintings={show[0].paintings}
         />
       </div>
-      <footer>
-        <Footer/>
-      </footer>
     </div>
   )
 }

@@ -1,6 +1,5 @@
 import { client } from "../../lib/client";
 import ProductDetails from "../../components/ProductDetails";
-import Footer from "../../components/Footer"
 
 const ProductDetailsPage = ({productDetails, frameOptions, sizeOptions, mediaOptions}) => {
 
@@ -12,7 +11,6 @@ const ProductDetailsPage = ({productDetails, frameOptions, sizeOptions, mediaOpt
         sizeOptions={sizeOptions}
         mediaOptions={mediaOptions}
       />
-      <Footer/>
     </div>
   )
 }
