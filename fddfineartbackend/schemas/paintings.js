@@ -17,6 +17,38 @@ export default {
       }
     },
     {
+      name: 'placeholder',
+      title: 'This is a placeholder image',
+      description: 'Turn this on if this is a placeholder and not a product for sale',
+      type: 'boolean'
+    },
+    {
+      name: 'original_available',
+      title: 'Is the original available?',
+      type: 'boolean',
+      hidden: ({document}) => document?.placeholder
+    },
+    {
+      name: 'original_price',
+      title: 'Price for original',
+      description: 'Enter a whole number - no dollar sign, commas, or decimal (e.g., 5000)',
+      type: 'number',
+      hidden: ({document}) => !document?.original_available
+    },
+    {
+      name: 'original_dimensions',
+      title: 'What are the dimensions of the original?',
+      description: 'Use this format: 24 x 32',
+      type: 'string',
+      hidden: ({document}) => document?.placeholder
+    },
+    {
+      name: 'prints_available',
+      title: 'Are prints available?',
+      type: 'boolean',
+      hidden: ({document}) => document?.placeholder
+    },
+    {
       name: 'slug',
       title: 'Slug',
       type: 'slug',
@@ -29,12 +61,14 @@ export default {
       name: 'tags',
       title: 'Tags',
       type: 'array',
-      of: [{ type: 'string' }]
+      of: [{ type: 'string' }],
+      hidden: ({document}) => document?.placeholder
     },
     {
       name: 'description',
       title: 'Description',
-      type: 'text'
+      type: 'text',
+      hidden: ({document}) => document?.placeholder
     },
     {
       name: 'order',

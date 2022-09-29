@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-import Link from "next/link"
 import { useState } from "react"
 import ProductModal from "./ProductModal"
 
@@ -7,10 +6,10 @@ export default function PaintingsInShow ({paintings}) {
   const [showModal, setShowModal] = useState(false)
   const [modalContents, setModalContents] = useState()
 
-  const openModal = (e, id, title, image, description, slug) => {
+  const openModal = (e, id, title, image, dimensions, slug) => {
     e.preventDefault()
     setShowModal(true)
-    setModalContents({id, title, image, description, slug})
+    setModalContents({id, title, image, dimensions, slug})
   }
 
   const closeModal = e => {
@@ -25,7 +24,7 @@ export default function PaintingsInShow ({paintings}) {
           <figure
             key={idx}
             className="flex grow hover-effect"
-            onClick={e => openModal(e, painting.id, painting.title, painting.imageUrl, painting.description, painting.slug)}
+            onClick={!painting.placeholder ? e => openModal(e, painting.id, painting.title, painting.imageUrl, painting.dimensions, painting.slug) : e => e.preventDefault()}
           >
             <img
               src={painting.imageUrl}
@@ -40,14 +39,18 @@ export default function PaintingsInShow ({paintings}) {
                 <div className="text-sm">
 
                 <p>
-                  32 x 40
+                  {painting.dimensions}
                 </p>
-                <p>
-                  Original - Sold
-                </p>
-                <p>
-                  Print - Available
-                </p>
+                {!painting.placeholder &&
+                  <>
+                    <p>
+                      Original {painting.original ? 'Available' : 'Sold'}
+                    </p>
+                    <p>
+                      {painting.prints ? 'Prints Available' : ''}
+                    </p>
+                  </>
+                }
                 </div>
               </div>
             </figurecaption>
@@ -59,7 +62,7 @@ export default function PaintingsInShow ({paintings}) {
           id={modalContents.id}
           title={modalContents.title}
           image={modalContents.image}
-          description={modalContents.description}
+          dimensions={modalContents.dimensions}
           slug={modalContents.slug}
           closeModal={closeModal}
         />

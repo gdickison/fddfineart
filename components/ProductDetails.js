@@ -2,12 +2,9 @@
 import { useState } from "react"
 
 const ProductDetails = ({productDetails}) => {
-console.log('productDetails', productDetails)
   const [selectedFrame, setSelectedFrame] = useState(null)
   const [selectedSize, setSelectedSize] = useState(null)
   const [selectedMedia, setSelectedMedia] = useState(null)
-  const [originalAvailable, setOriginalAvailable] = useState(true)
-  const [printsAvailable, setPrintsAvailable] = useState(true)
 
   const handleSizeChange = e => {
     e.preventDefault()
@@ -29,7 +26,7 @@ console.log('productDetails', productDetails)
     alert("Added to cart")
   }
 
-  const { id, title, image, slug, tags, description } = productDetails
+  const { id, title, image, original, original_price, prints, slug, tags, description } = productDetails
   return (
     <div>
       <section className="text-gray-600 body-font">
@@ -43,18 +40,18 @@ console.log('productDetails', productDetails)
                 <h1 className="text-black text-3xl title-font font-thin mb-4">{title}</h1>
                 <p className="leading-relaxed mb-4  font-thin text-black">{description}</p>
               </div>
-              {originalAvailable &&
+              {original &&
                 <div>
                 <h2 className="text-black text-2xl title-font font-thin mb-4">Purchase the Original</h2>
                   <div className="flex justify-between border-t border-gray-200 py-2 items-center">
-                    <span className="title-font text-xl mx-2 text-black" >$2000.00</span>
+                    <span className="title-font text-xl mx-2 text-black" >{new Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD', maximumFractionDigits: 0}).format(original_price)}</span>
                     <div className="w-1/2 mx-2">
                       <button type="button" className="w-full py-2 font-semibold bg-gray-100 text-gray-800 border-2 hover:border-black" onClick={addToCart}>Add to Cart</button>
                     </div>
                   </div>
                 </div>
               }
-              {printsAvailable &&
+              {prints &&
                 <div>
                   <h2 className="text-black text-2xl title-font font-thin mb-4">Purchase a Print</h2>
                   <div className="flex justify-between border-t border-gray-200 py-2">
@@ -82,7 +79,7 @@ console.log('productDetails', productDetails)
                     </select>
                   </div>
                   <div className="flex justify-between border-t border-gray-200 py-2 items-center">
-                    <span className="title-font text-xl mx-2 text-black" >$58.00</span>
+                    <span className="title-font text-xl mx-2 text-black" >{new Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD', maximumFractionDigits: 0}).format(58)}</span>
                     <div className="w-1/2 mx-2">
                       <button type="button" className="w-full py-2 font-semibold bg-gray-100 text-gray-800 border-2 hover:border-black" onClick={addToCart}>Add to Cart</button>
                     </div>

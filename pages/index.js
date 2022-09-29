@@ -3,8 +3,6 @@ import PaintingsInShow from '../components/PaintingsInShow'
 import Footer from '../components/Footer'
 
 export default function Home({show}) {
-console.log('show', show)
-console.log('paintings', show[0].paintings)
   return (
     <div>
       <div>
@@ -32,6 +30,10 @@ export const getServerSideProps = async () => {
         "id": _id,
         title,
         "imageUrl": image.asset->url,
+        placeholder,
+        "original": original_available,
+        "dimensions": original_dimensions,
+        "prints": prints_available,
         "slug": slug.current,
         tags,
         description,

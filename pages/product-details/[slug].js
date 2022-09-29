@@ -38,6 +38,10 @@ export const getStaticProps = async (context) => {
     "id": _id,
     title,
     "image": image.asset->url,
+    placeholder,
+    "original": original_available,
+    original_price,
+    "prints": prints_available,
     slug,
     tags,
     description
