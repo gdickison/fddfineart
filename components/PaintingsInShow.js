@@ -31,7 +31,7 @@ export default function PaintingsInShow ({paintings}) {
               alt={painting.title}
               className="grow h-72 m-2 object-center object-cover hover:cursor-pointer"
             />
-            <figurecaption>
+            <figcaption>
               <div className="caption-container hover:cursor-pointer font-libre">
                 <h4 className="text-xl">
                   {painting.title}
@@ -53,7 +53,7 @@ export default function PaintingsInShow ({paintings}) {
                 }
                 </div>
               </div>
-            </figurecaption>
+            </figcaption>
           </figure>
         ))}
       </section>

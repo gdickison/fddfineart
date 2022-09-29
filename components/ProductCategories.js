@@ -31,7 +31,7 @@ export default function ProductCategories ({categories}) {
               alt={category.title}
               className="grow h-72 m-2 object-center object-cover hover:cursor-pointer"
             />
-            <figurecaption>
+            <figcaption>
               <div className="caption-container hover:cursor-pointer font-libre">
                 <h4 className="text-xl">
                   {category.title}
@@ -48,7 +48,7 @@ export default function ProductCategories ({categories}) {
                   </p>
                 </div>
               </div>
-            </figurecaption>
+            </figcaption>
           </figure>
         ))}
       </section>

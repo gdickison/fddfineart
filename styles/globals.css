@@ -40,7 +40,7 @@ figure img {
   transition: .5s ease-in-out;
 }
 
-figurecaption {
+figcaption {
   position: absolute;
   top: 0;
   left: 0;

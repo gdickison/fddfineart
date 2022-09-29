@@ -2,12 +2,15 @@ import { client } from "../../lib/client";
 import ProductDetails from "../../components/ProductDetails";
 import Footer from "../../components/Footer"
 
-const ProductDetailsPage = ({productDetails}) => {
+const ProductDetailsPage = ({productDetails, frameOptions, sizeOptions, mediaOptions}) => {
 
   return (
     <div>
       <ProductDetails
         productDetails={productDetails}
+        frameOptions={frameOptions}
+        sizeOptions={sizeOptions}
+        mediaOptions={mediaOptions}
       />
       <Footer/>
     </div>
@@ -48,7 +51,33 @@ export const getStaticProps = async (context) => {
   }`)
   .then(data => data[0])
 
+  const frameOptions = await client.fetch(`*[_type == "frame"] | order(price){
+    "id": _id,
+    style,
+    description,
+    image,
+    price
+  }`)
+
+  const sizeOptions = await client.fetch(`*[_type == "sizes"] | order(price){
+    "id": _id,
+    size,
+    price
+  }`)
+
+  const mediaOptions = await client.fetch(`*[_type == "media"] | order(price){
+    "id": _id,
+    style,
+    description,
+    price
+  }`)
+
   return {
-    props: {productDetails}
+    props: {
+      productDetails,
+      frameOptions,
+      sizeOptions,
+      mediaOptions
+    }
   }
 }
