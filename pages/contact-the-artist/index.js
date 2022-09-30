@@ -1,10 +1,8 @@
+import ComingSoon from "../../components/ComingSoon"
+
 const ContactTheArtist = () => {
   return (
-    <div>
-      <h1 className="text-2xl font-libre text-black text-center">
-        Contact the Artist
-      </h1>
-    </div>
+    <ComingSoon/>
   )
 }
 
