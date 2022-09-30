@@ -12,19 +12,19 @@ const NavBar = () => {
     },
     {
       itemTitle: 'Contact the Artist',
-      itemLink: '/contact-the-artist'
+      itemLink: '/'
     },
     {
       itemTitle: 'About',
-      itemLink: '/about'
+      itemLink: '/'
     },
     {
       itemTitle: 'Newsletter',
-      itemLink: '/newsletter'
+      itemLink: '/'
     },
     {
       itemTitle: 'Galleries',
-      itemLink: '/gallery'
+      itemLink: '/'
     }
   ]
 
