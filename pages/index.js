@@ -4,18 +4,8 @@
 
 export default function Home({show}) {
   return (
-    <div>
-      {/* <div> */}
-        <figure className="w-[100vw]">
-          <img className="w-[100vw] h-[100vh]" src="/curtain.jpg" alt="" />
-          <figcaption className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 ">
-            <h2 className="text-6xl text-gray-200 font-libre tracking-widest uppercase">Coming Soon!</h2>
-          </figcaption>
-        </figure>
-        {/* <PaintingsInShow
-          paintings={show[0].paintings}
-        /> */}
-      {/* </div> */}
+    <div className="h-[70vh] flex justify-center items-center">
+      <h2 className="text-6xl text-gray-900 font-libre tracking-widest uppercase">Coming Soon!</h2>
     </div>
   )
 }
