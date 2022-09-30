@@ -13,7 +13,6 @@ const ProductDetailsPage = ({productDetails, frameOptions, sizeOptions, mediaOpt
   const handleSizeChange = e => {
     e.preventDefault()
     sizeOptions.find(option => {
-      console.log('option', option)
       if(option.id === e.target.value){
         setSelectedSize({'id': option.id, 'size': option.size, 'price': option.price})
       }
@@ -38,16 +37,18 @@ const ProductDetailsPage = ({productDetails, frameOptions, sizeOptions, mediaOpt
     })
   }
 
-  const { id, title, image, original, original_price, prints, slug, tags, description } = productDetails
+  const { id, title, image, original, original_price, original_dimensions, prints, slug, tags, description } = productDetails
 
   const handleAddOriginalToCart = e => {
     e.preventDefault()
-    addToCart({id, title, original, original_price})
+    const cartId = self.crypto.randomUUID()
+    addToCart({cartId, id, title, image, original, original_price, original_dimensions})
   }
 
   const handleAddPrintToCart = e => {
     e.preventDefault()
-    addToCart({id, title, selectedFrame, selectedMedia, selectedSize})
+    const cartId = self.crypto.randomUUID()
+    addToCart({cartId, id, title, image, selectedFrame, selectedMedia, selectedSize})
   }
 
   return (
@@ -150,6 +151,7 @@ export const getStaticProps = async (context) => {
     placeholder,
     "original": original_available,
     original_price,
+    original_dimensions,
     "prints": prints_available,
     slug,
     tags,
