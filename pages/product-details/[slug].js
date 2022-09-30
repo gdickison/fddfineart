@@ -83,7 +83,7 @@ const ProductDetailsPage = ({productDetails, frameOptions, sizeOptions, mediaOpt
                     <select className="w-1/2 mx-2 text-center border-2 hover:border-gray-800 bg-white text-black font-thin text-xl" id="size" name="size" defaultValue="" onChange={handleSizeChange}>
                       {sizeOptions && sizeOptions.map(option => {
                         return (
-                          <option key={option.id} value={option.id}>{option.size}</option> // TODO: add price to value or onChange
+                          <option key={option.id} value={option.id}>{option.size}</option>
                         )
                       })}
                     </select>
@@ -93,7 +93,7 @@ const ProductDetailsPage = ({productDetails, frameOptions, sizeOptions, mediaOpt
                     <select className="w-1/2 mx-2 text-center border-2 hover:border-gray-800 bg-white text-black font-thin text-xl" id="media" name="media" defaultValue="" onChange={handleMediaChange}>
                       {mediaOptions && mediaOptions.map(option => {
                         return (
-                          <option key={option.id} value={option.id}>{option.style}</option> // TODO: add price to value or onChange
+                          <option key={option.id} value={option.id}>{option.style}</option>
                         )
                       })}
                     </select>
@@ -103,7 +103,7 @@ const ProductDetailsPage = ({productDetails, frameOptions, sizeOptions, mediaOpt
                     <select className="w-1/2 mx-2 text-center border-2 hover:border-gray-800 bg-white text-black font-thin text-xl" id="frame" name="frame" defaultValue="" onChange={handleFrameChange}>
                       {frameOptions && frameOptions.map(option => {
                         return (
-                          <option key={option.id} value={option.id}>{option.style}</option> // TODO: add price to value or onChange
+                          <option key={option.id} value={option.id}>{option.style}</option>
                         )
                       })}
                     </select>
