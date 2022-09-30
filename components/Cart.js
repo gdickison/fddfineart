@@ -3,7 +3,7 @@ const Cart = () => {
   return (
     <div>
       <h1>Cart goes here</h1>
-      <div className="flex flex-col max-w-3xl p-6 space-y-4 sm:p-10 bg-gray-900 text-gray-100">
+      <div className="flex flex-col max-w-3xl p-6 space-y-4 sm:p-10 bg-white text-gray-900">
         <h2 className="text-xl font-semibold">Your cart</h2>
         <ul className="flex flex-col divide-y divide-gray-700">
           <li className="flex flex-col py-6 sm:flex-row sm:justify-between">
@@ -13,11 +13,11 @@ const Cart = () => {
                 <div className="flex justify-between w-full pb-2 space-x-2">
                   <div className="space-y-1">
                     <h3 className="text-lg font-semibold leading-snug sm:pr-8">Polaroid camera</h3>
-                    <p className="text-sm text-gray-400">Classic</p>
+                    <p className="text-sm text-gray-900">Classic</p>
                   </div>
                   <div className="text-right">
                     <p className="text-lg font-semibold">59.99€</p>
-                    <p className="text-sm line-through text-gray-600">75.50€</p>
+                    <p className="text-sm line-through text-gray-900">75.50€</p>
                   </div>
                 </div>
                 <div className="flex text-sm divide-x">
@@ -48,11 +48,11 @@ const Cart = () => {
                 <div className="flex justify-between w-full pb-2 space-x-2">
                   <div className="space-y-1">
                     <h3 className="text-lg font-semibold leading-snug sm:pr-8">Replica headphones</h3>
-                    <p className="text-sm text-gray-400">White</p>
+                    <p className="text-sm text-gray-900">White</p>
                   </div>
                   <div className="text-right">
                     <p className="text-lg font-semibold">99.95€</p>
-                    <p className="text-sm line-through text-gray-600">150€</p>
+                    <p className="text-sm line-through text-gray-900">150€</p>
                   </div>
                 </div>
                 <div className="flex text-sm divide-x">
@@ -83,11 +83,11 @@ const Cart = () => {
                 <div className="flex justify-between w-full pb-2 space-x-2">
                   <div className="space-y-1">
                     <h3 className="text-lg font-semibold leading-snug sm:pr-8">Set of travel chargers</h3>
-                    <p className="text-sm text-gray-400">Black</p>
+                    <p className="text-sm text-gray-900">Black</p>
                   </div>
                   <div className="text-right">
                     <p className="text-lg font-semibold">8.99€</p>
-                    <p className="text-sm line-through text-gray-600">15.99€</p>
+                    <p className="text-sm line-through text-gray-900">15.99€</p>
                   </div>
                 </div>
                 <div className="flex text-sm divide-x">
@@ -116,7 +116,7 @@ const Cart = () => {
           <p>Total amount:
             <span className="font-semibold">357 €</span>
           </p>
-          <p className="text-sm text-gray-400">Not including taxes and shipping costs</p>
+          <p className="text-sm text-gray-900">Not including taxes and shipping costs</p>
         </div>
         <div className="flex justify-end space-x-4">
           <button type="button" className="px-6 py-2 border rounded-md border-violet-400">Back
