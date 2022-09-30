@@ -12,6 +12,7 @@ import productVariant from './productVariant'
 import size from './size'
 import shows from './shows'
 import paintings from './paintings'
+import bio from './bio'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -29,6 +30,7 @@ export default createSchema({
     productVariant,
     size,
     shows,
-    paintings
+    paintings,
+    bio
   ]),
 })
