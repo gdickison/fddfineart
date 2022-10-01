@@ -2,31 +2,10 @@
 import Link from "next/link"
 import Cart from "./Cart"
 import { useStateContext } from "../context/StateContext"
+import { navMenuItems } from "../lib/utils"
 
 const NavBar = () => {
   const { showCart, setShowCart, totalQuantities } = useStateContext()
-  const navMenuItems = [
-    {
-      itemTitle: 'Inktober',
-      itemLink: '/'
-    },
-    {
-      itemTitle: 'Contact the Artist',
-      itemLink: '/'
-    },
-    {
-      itemTitle: 'About',
-      itemLink: '/'
-    },
-    {
-      itemTitle: 'Newsletter',
-      itemLink: '/'
-    },
-    {
-      itemTitle: 'Galleries',
-      itemLink: '/'
-    }
-  ]
 
   return (
     <nav className="border-y border-gray-100 block">

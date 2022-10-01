@@ -38,7 +38,7 @@ function MyApp({ Component, pageProps }) {
           <Component {...pageProps} />
         </div>
       </StateContext>
-      {/* <Footer/> */}
+      <Footer/>
     </div>
   )
 }
