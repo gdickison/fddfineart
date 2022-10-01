@@ -4,11 +4,8 @@ import createSchema from 'part:@sanity/base/schema-creator'
 // Then import schema types from any plugins that might expose them
 import schemaTypes from 'all:part:@sanity/base/schema-type'
 import blockContent from './blockContent'
-import category from './category'
 import frame from './frame'
 import media from './media'
-import product from './product'
-import productVariant from './productVariant'
 import size from './size'
 import shows from './shows'
 import paintings from './paintings'
@@ -23,11 +20,8 @@ export default createSchema({
   types: schemaTypes.concat([
     /* Your types here! */
     blockContent,
-    category,
     frame,
     media,
-    product,
-    productVariant,
     size,
     shows,
     paintings,
