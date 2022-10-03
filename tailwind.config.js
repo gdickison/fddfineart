@@ -8,6 +8,9 @@ module.exports = {
       fontFamily: {
         libre: ['"Libre Baskerville"'],
         cinzel: ['Cinzel']
+      },
+      screens: {
+        'landscape': '820px'
       }
     },
   },

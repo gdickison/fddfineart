@@ -40,7 +40,7 @@ const Cart = () => {
 
   return (
     <div className="fixed inset-0 overflow-auto z-50" ref={cartRef}>
-      <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col w-11/12 md:w-1/2 h-fit overflow-scroll md:max-h-[100vh] md:min-h-[25vh] p-6 space-y-4 sm:p-10 text-gray-900 border-2 shadow-xl bg-white">
+      <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col w-11/12 landscape:w-1/2 h-fit overflow-scroll landscape:max-h-[100vh] landscape:min-h-[25vh] p-6 space-y-4 sm:p-10 text-gray-900 border-2 shadow-xl bg-white">
         <button className="absolute md:top-12 right-8 w-12 h-12 hover:cursor-pointer" onClick={() => setShowCart(false)}>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" className="flex-shrink-0 w-8 h-8">
             <polygon points="427.314 107.313 404.686 84.687 256 233.373 107.314 84.687 84.686 107.313 233.373 256 84.686 404.687 107.314 427.313 256 278.627 404.686 427.313 427.314 404.687 278.627 256 427.314 107.313"></polygon>
