@@ -1,6 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import { useRef } from "react"
+import toast from "react-hot-toast"
 import { useStateContext } from "../context/StateContext"
+import getStripe from "../lib/getStripe"
 
 const Cart = () => {
   const cartRef = useRef()
@@ -13,6 +15,28 @@ const Cart = () => {
   const cartTotalPrice = priceArray.reduce((a, b) => {
     return a + b
   }, 0)
+
+  const handleCheckout = async () => {
+    const stripe = await getStripe()
+
+    const response = await fetch('/api/stripe', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({cartItems, cartTotalPrice})
+    })
+
+    if(response.statusCode === 500){
+      return
+    }
+
+    const data = await response.json()
+
+    toast.loading('Redirecting...')
+
+    stripe.redirectToCheckout({ sessionId: data.id })
+  }
 
   return (
     <div className="fixed inset-0 overflow-auto" ref={cartRef}>
@@ -78,13 +102,13 @@ const Cart = () => {
                 <p className="font-semibold text-lg">
                   Total: {new Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD', maximumFractionDigits: 0}).format(cartTotalPrice)}
                 </p>
-                <p className="text-sm text-gray-900">Not including taxes and shipping costs</p>
+                <p className="text-sm text-gray-900">Price includes US taxes and US shipping</p>
               </div>
               <div className="flex justify-end space-x-4">
                 {/* <button type="button" className="px-6 py-2 bg-gray-100 text-gray-800 border-2 hover:border-black" onClick={e => setShowCart(false)}>
                   Continue Shopping
                 </button> */}
-                <button type="button" className="px-6 py-2 bg-gray-100 text-gray-800 border-2 hover:border-black hover:bg-black hover:text-gray-100 uppercase tracking-widest font-semibold" onClick={e => console.log('checkout button clicked')}>
+                <button type="button" className="px-6 py-2 bg-gray-100 text-gray-800 border-2 hover:border-black hover:bg-black hover:text-gray-100 uppercase tracking-widest font-semibold" onClick={handleCheckout}>
                   Checkout
                 </button>
               </div>
