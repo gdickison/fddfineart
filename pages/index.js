@@ -3,13 +3,9 @@ import PaintingsInShow from '../components/PaintingsInShow'
 
 export default function Home({show}) {
   return (
-    <div>
-      <div>
-        <PaintingsInShow
-          paintings={show[0].paintings}
-        />
-      </div>
-    </div>
+    <PaintingsInShow
+      paintings={show[0].paintings}
+    />
   )
 }
 

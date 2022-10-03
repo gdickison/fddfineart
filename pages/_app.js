@@ -19,10 +19,10 @@ function MyApp({ Component, pageProps }) {
           <Toaster
             containerStyle={{
               positon: 'absolute',
-              top: 300,
-              left: 300,
-              bottom: 300,
-              right: 300,
+              top: '25%',
+              left: '20%',
+              bottom: '25%',
+              right: '20%',
             }}
             toastOptions={{
               style: {

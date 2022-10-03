@@ -26,7 +26,7 @@ const NavBar = () => {
           <li className="flex items-center h-full px-6 whitespace-nowrap relative text-gray-600 transition ease hover:bg-gray-100 duration-200 hover:cursor-pointer" onClick={e => setShowCart(prev => !prev)}>
             <div className="relative">
               <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-xs h-4 w-4 mt-1 bg-gray-200 rounded-full">{totalQuantities}</span>
-              <img src="/shopping_bag.svg" alt="shopping bag" className="h-12 opacity-40"/>
+              <img src="/shopping_bag.svg" alt="shopping bag" className="min-h-[2rem] min-w-[2rem] md:h-12 opacity-40"/>
             </div>
           </li>
         }
