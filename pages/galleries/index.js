@@ -1,9 +1,9 @@
 import ComingSoon from "../../components/ComingSoon"
 
-const Gallery = () => {
+const Galleries = () => {
   return (
     <ComingSoon/>
   )
 }
 
-export default Gallery
+export default Galleries
