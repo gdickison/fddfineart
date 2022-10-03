@@ -6,10 +6,10 @@ export default function PaintingsInShow ({paintings}) {
   const [showModal, setShowModal] = useState(false)
   const [modalContents, setModalContents] = useState()
 
-  const openModal = (e, id, title, image, dimensions, slug) => {
+  const openModal = (e, original, prints, id, title, image, dimensions, slug) => {
     e.preventDefault()
     setShowModal(true)
-    setModalContents({id, title, image, dimensions, slug})
+    setModalContents({ original, prints, id, title, image, dimensions, slug})
   }
 
   const closeModal = e => {
@@ -24,7 +24,7 @@ export default function PaintingsInShow ({paintings}) {
           <figure
             key={idx}
             className="flex grow hover-effect"
-            onClick={!painting.placeholder ? e => openModal(e, painting.id, painting.title, painting.imageUrl, painting.dimensions, painting.slug) : e => e.preventDefault()}
+            onClick={!painting.placeholder ? e => openModal(e, painting.original, painting.prints, painting.id, painting.title, painting.imageUrl, painting.dimensions, painting.slug) : e => e.preventDefault()}
           >
             <img
               src={painting.imageUrl}
@@ -59,6 +59,8 @@ export default function PaintingsInShow ({paintings}) {
       </section>
       {showModal &&
         <ProductModal
+          original={modalContents.original}
+          prints={modalContents.prints}
           id={modalContents.id}
           title={modalContents.title}
           image={modalContents.image}

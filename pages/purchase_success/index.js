@@ -7,10 +7,25 @@ const PurchaseSuccess = () => {
   const { setCartItems, setTotalPrice } = useStateContext()
   const [order, setOrder] = useState(null)
 
+  const updatePainting = async () => {
+    const _id = "40b83307-79cb-4e91-b75c-923e6da004de"
+
+    try {
+      await fetch('/api/originalSold', {
+        method: 'PUT',
+        body: JSON.stringify({_id}),
+        type: 'application/json'
+      })
+    } catch (error) {
+      console.log('error', error)
+    }
+  }
+
   useEffect(() => {
     localStorage.clear()
     setCartItems([])
     setTotalPrice(0)
+    updatePainting()
   }, [])
 
   return (

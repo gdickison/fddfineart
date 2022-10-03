@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link"
 
-const ProductModal = ({id, title, image, dimensions, slug, closeModal}) => {
+const ProductModal = ({original, prints, id, title, image, dimensions, slug, closeModal}) => {
   return (
     <div key={id} className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center  w-[100vw] h-[100vh] p-6 sm:py-8 sm:px-12 bg-black text-gray-100 z-50">
       <button className="absolute top-4 right-4 w-12 h-12 hover:cursor-pointer" onClick={closeModal}>
@@ -19,9 +19,14 @@ const ProductModal = ({id, title, image, dimensions, slug, closeModal}) => {
         <span>{` - `}</span>
         <span className="font-libre">{dimensions}</span>
         <span>{` - `}</span>
-        <Link href={`/product-details/${slug}`}>
-          <span className="underline font-libre hover:text-gray-400 hover:cursor-pointer">See Purchase Options</span>
-        </Link>
+        {(original || prints) &&
+          <Link href={`/product-details/${slug}`}>
+            <span className="underline font-libre hover:text-gray-400 hover:cursor-pointer">See Purchase Options</span>
+          </Link>
+         }
+         {!original && !prints  &&
+            <span className="underline font-libre hover:text-gray-400 hover:cursor-pointer" onClick={closeModal}>Back to Show</span>
+         }
       </p>
     </div>
   )

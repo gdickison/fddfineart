@@ -4,8 +4,8 @@ import { client } from '../../lib/client'
 const About = ({bio}) => {
   return (
     <div className="flex justify-center">
-      <div className="flex flex-col max-w-md p-6 gap-4">
-        <img src={bio.imageUrl} alt="" className="flex-shrink-0 object-cover h-64 rounded-sm sm:h-96 bg-gray-500 aspect-square" />
+      <div className="flex flex-col max-w-3xl p-6 gap-4">
+        <img src={bio.imageUrl} alt="" className="flex-shrink-0 object-cover rounded-sm bg-gray-500 aspect-square" />
         <div className="space-y-4">
           <h2 className="text-xl font-semibold">{bio.name}</h2>
           <p>{bio.text}</p>
