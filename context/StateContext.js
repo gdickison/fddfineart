@@ -6,7 +6,7 @@ const Context = createContext()
 export const StateContext = ({ children }) => {
   const [showCart, setShowCart] = useState(false)
   const [cartItems, setCartItems] = useState([])
-  const [totalPrice, setTotalPrice] = useState()
+  const [totalPrice, setTotalPrice] = useState(0)
   const [totalQuantities, setTotalQuantities] = useState(0)
 
   const addToCart = (product) => {
@@ -20,14 +20,15 @@ export const StateContext = ({ children }) => {
     setTotalQuantities(prevState => prevState - 1)
   }
 
-
   return (
     <Context.Provider
       value={{
         showCart,
         setShowCart,
         cartItems,
+        setCartItems,
         totalPrice,
+        setTotalPrice,
         totalQuantities,
         addToCart,
         removeFromCart
