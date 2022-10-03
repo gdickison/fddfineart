@@ -8,9 +8,8 @@ const PurchaseSuccess = () => {
   const [order, setOrder] = useState(null)
   const {query} = useRouter()
 
-  console.log('query', query)
-
   const updatePainting = async () => {
+
     const _id = "40b83307-79cb-4e91-b75c-923e6da004de"
 
     try {
@@ -28,7 +27,9 @@ const PurchaseSuccess = () => {
     localStorage.clear()
     setCartItems([])
     setTotalPrice(0)
-    updatePainting()
+    if(query.success){
+      updatePainting()
+    }
   }, [])
 
   return (
@@ -41,7 +42,7 @@ const PurchaseSuccess = () => {
               <p className="lg:w-2/3 mx-auto leading-relaxed text-base">Thank you for your purchase.</p>
             </>
           }
-          {query.cancel &&
+          {query.canceled &&
             <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Your Purchase Was Cancelled</h1>
           }
         </div>
