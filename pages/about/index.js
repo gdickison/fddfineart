@@ -12,7 +12,9 @@ const About = ({bio}) => {
         alt={`Slide ${idx + 1}`}
         data-slide={`Slide ${idx + 1}`}
         style={{
-          width: '100%'
+          width: '100%',
+          paddingLeft: '5px',
+          paddingRight: '5px'
         }}
       />
     )
@@ -31,7 +33,7 @@ const About = ({bio}) => {
                   backgroundColor: 'transparent',
                   backgroundPosition: 'left',
                   height: '2rem',
-                  width: '2rem',
+                  width: '2.5rem',
                   padding: 0
                 },
                 prevButtonText: " ",
@@ -41,10 +43,11 @@ const About = ({bio}) => {
                   backgroundColor: 'transparent',
                   backgroundPosition: 'right',
                   height: '2rem',
-                  width: '2rem',
+                  width: '2.5rem',
                   padding: 0
                 }
               }}
+              dragThreshold={0}
               enableKeyboardControls={true}
               wrapAround={true}
             >

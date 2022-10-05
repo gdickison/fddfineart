@@ -27,49 +27,48 @@ const Galleries = () => {
   })
 
   return (
-    <main className="flex justify-center h-[90vh] md:h-auto">
-      <div className="flex flex-col items-center md:p-6 gap-0 md:gap-6">
-        <div className="flex items-center justify-center w-[32rem] md:w-[40rem] h-80 md:h-96 overflow-hidden relative">
-          <Carousel
-            defaultControlsConfig={{
-              nextButtonText: " ",
-              nextButtonStyle: {
-                backgroundImage: 'url("/next_chev.svg")',
-                backgroundRepeat: 'no-repeat',
-                backgroundColor: 'transparent',
-                backgroundPosition: 'left',
-                height: '2rem',
-                width: '2rem',
-                padding: 0
-              },
-              prevButtonText: " ",
-              prevButtonStyle: {
-                backgroundImage: 'url("/previous_chev.svg")',
-                backgroundRepeat: 'no-repeat',
-                backgroundColor: 'transparent',
-                backgroundPosition: 'right',
-                height: '2rem',
-                width: '2rem',
-                padding: 0
-              }
-            }}
-            enableKeyboardControls={true}
-            wrapAround={true}
-          >
-            {slides}
-          </Carousel>
-        </div>
-        <div className="flex flex-col items-center md:gap-4">
-          <Link href="https://www.montanagallery.net/forrest-dickison">
-            <a target="_blank">
-              <h2 className="text-3xl font-libre uppercase">Montana Gallery</h2>
-            </a>
-          </Link>
-          <p className="text-center">
-            <span className="block pb-2 text-sm text-gray-400">2710 2nd Avenue North</span>
-            <span className="block pb-2 text-sm text-gray-400">Billings, MT 59101</span>
-          </p>
-        </div>
+    <main className="flex flex-col items-center md:p-6 gap-0 md:gap-6 max-w-[1170px]">
+      <div className="flex items-center justify-center w-[32rem] md:w-[40rem] h-80 md:h-96 overflow-hidden relative">
+        <Carousel
+          defaultControlsConfig={{
+            nextButtonText: " ",
+            nextButtonStyle: {
+              backgroundImage: 'url("/next_chev.svg")',
+              backgroundRepeat: 'no-repeat',
+              backgroundColor: 'transparent',
+              backgroundPosition: 'left',
+              height: '2rem',
+              width: '2rem',
+              padding: 0
+            },
+            prevButtonText: " ",
+            prevButtonStyle: {
+              backgroundImage: 'url("/previous_chev.svg")',
+              backgroundRepeat: 'no-repeat',
+              backgroundColor: 'transparent',
+              backgroundPosition: 'right',
+              height: '2rem',
+              width: '2rem',
+              padding: 0
+            }
+          }}
+          dragThreshold={0}
+          enableKeyboardControls={true}
+          wrapAround={true}
+        >
+          {slides}
+        </Carousel>
+      </div>
+      <div className="flex flex-col items-center md:gap-4">
+        <Link href="https://www.montanagallery.net/forrest-dickison">
+          <a target="_blank">
+            <h2 className="text-3xl font-libre uppercase">Montana Gallery</h2>
+          </a>
+        </Link>
+        <p className="text-center">
+          <span className="block pb-2 text-sm text-gray-400">2710 2nd Avenue North</span>
+          <span className="block pb-2 text-sm text-gray-400">Billings, MT 59101</span>
+        </p>
       </div>
     </main>
   )
