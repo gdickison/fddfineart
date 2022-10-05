@@ -5,12 +5,16 @@ export default {
   type: 'document',
   fields: [
     {
-      name: 'bio_image',
-      title: 'Bio Photo / Image',
-      type: 'image',
-      options: {
-        hotspot: true
-      }
+      name: 'bio_images',
+      title: 'Bio Photos / Images',
+      description: 'Upload images to be displayed on the bio page. Images with a square (or nearly square) aspect ratio will work best.',
+      type: 'array',
+      of: [{
+        type: 'image',
+        options: {
+          hotspot: true
+        }
+      }]
     },
     {
       name: 'bio_name',
