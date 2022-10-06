@@ -1,36 +1,35 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useStateContext } from '../../context/StateContext'
 
 const PurchaseSuccess = () => {
   const { setCartItems, setTotalPrice } = useStateContext()
-  const [order, setOrder] = useState(null)
   const {query} = useRouter()
 
-  const updatePainting = async () => {
-
-    const _id = "40b83307-79cb-4e91-b75c-923e6da004de"
-
-    try {
-      await fetch('/api/originalSold', {
-        method: 'PUT',
-        body: JSON.stringify({_id}),
-        type: 'application/json'
-      })
-    } catch (error) {
-      console.log('error', error)
-    }
-  }
-
   useEffect(() => {
+    const updatePainting = async () => {
+      const _id = query.id
+
+      if(query.success && query.original){
+        try {
+          await fetch('/api/originalSold', {
+            method: 'PUT',
+            body: JSON.stringify({_id}),
+            type: 'application/json'
+          })
+        } catch (error) {
+          console.log('error', error)
+        }
+      }
+    }
+
+    updatePainting()
+
     localStorage.clear()
     setCartItems([])
     setTotalPrice(0)
-    if(query.success){
-      updatePainting()
-    }
-  }, [])
+  }, [query, setCartItems, setTotalPrice])
 
   return (
     <section className="text-gray-600 body-font">

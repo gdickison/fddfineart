@@ -14,7 +14,6 @@ export default async function handler(req, res) {
         },
         line_items: [
           {
-            // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
             price_data: {
               currency: 'usd',
               unit_amount: req.body.cartTotalPrice * 100,
@@ -24,12 +23,11 @@ export default async function handler(req, res) {
                 images: [req.body.cartItems[0].image]
               }
             },
-            quantity: 1,
-          },
+            quantity: 1
+          }
         ],
-        success_url: `${req.headers.origin}/purchase_success?success=true`,
+        success_url: `${req.headers.origin}/purchase_success?success=true&original=${req.body.cartItems[0].original}&id=${req.body.cartItems[0].id}`,
         cancel_url: `${req.headers.origin}/purchase_success?canceled=true`
-        // automatic_tax: {enabled: true},
       }
       // Create Checkout Sessions from body params.
       const session = await stripe.checkout.sessions.create(params);
