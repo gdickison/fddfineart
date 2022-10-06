@@ -7,7 +7,7 @@ import Footer from '../components/Footer'
 
 function MyApp({ Component, pageProps }) {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col md:w-screen md:max-w-[1170px]">
       <Head>
         <title>Forrest Dickison Fine Art & Illustration</title>
       </Head>
