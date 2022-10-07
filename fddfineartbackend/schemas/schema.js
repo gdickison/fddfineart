@@ -3,13 +3,13 @@ import createSchema from 'part:@sanity/base/schema-creator'
 
 // Then import schema types from any plugins that might expose them
 import schemaTypes from 'all:part:@sanity/base/schema-type'
+import bio from './bio'
 import blockContent from './blockContent'
 import frame from './frame'
 import media from './media'
-import size from './size'
-import shows from './shows'
 import paintings from './paintings'
-import bio from './bio'
+import shows from './shows'
+import size from './size'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -19,12 +19,12 @@ export default createSchema({
   // to the ones provided by any plugins that are installed
   types: schemaTypes.concat([
     /* Your types here! */
+    bio,
     blockContent,
     frame,
     media,
-    size,
-    shows,
     paintings,
-    bio
+    shows,
+    size
   ]),
 })

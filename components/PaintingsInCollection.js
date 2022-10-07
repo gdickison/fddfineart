@@ -2,7 +2,7 @@
 import { useState } from "react"
 import ProductModal from "./ProductModal"
 
-export default function PaintingsInShow ({paintings}) {
+export default function PaintingsInCollection ({paintings}) {
   const [showModal, setShowModal] = useState(false)
   const [modalContents, setModalContents] = useState()
 

@@ -1,9 +1,9 @@
 import { client } from '../lib/client'
-import PaintingsInShow from '../components/PaintingsInShow'
+import PaintingsInCollection from '../components/PaintingsInCollection'
 
 export default function Home({show}) {
   return (
-    <PaintingsInShow
+    <PaintingsInCollection
       paintings={show[0].paintings}
     />
   )
