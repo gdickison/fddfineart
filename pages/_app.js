@@ -12,9 +12,7 @@ function MyApp({ Component, pageProps }) {
         <title>Forrest Dickison Fine Art & Illustration</title>
       </Head>
       <StateContext>
-      <main>
         <HeroBanner/>
-      </main>
         <div className="flex-grow">
           <Toaster
             containerStyle={{

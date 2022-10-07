@@ -11,6 +11,11 @@ body {
   background-color: #fff;
 }
 
+body {
+  max-width: 73.125rem;
+  margin: 0 auto;
+}
+
 @media screen and (max-width: 767px) {
   body {
     display: flex;
@@ -58,7 +63,7 @@ figcaption {
 }
 
 figure.hover-effect .caption-container {
-  width: 300px;
+  width: 19rem;
   opacity: 0;
   padding-top: 1.25rem;
   padding-left: 1.6rem;

@@ -8,13 +8,13 @@ const NavBar = () => {
   const { showCart, setShowCart, totalQuantities } = useStateContext()
 
   return (
-    <nav className="border-y border-gray-100 block">
+    <nav className="border-y border-gray-100">
       <div className="hidden curser-pointer">Hamburger</div>
-      <ul className="flex justify-between touch-pan-y relative h-11 p-0 list-none">
+      <ul className="flex justify-between list-none">
         {navMenuItems.map(item => {
           return (
             <Link key={item.itemTitle} href={item.itemLink}>
-              <li  className="flex items-center h-full px-6 whitespace-nowrap relative text-gray-600 transition ease hover:bg-gray-100 duration-200 hover:cursor-pointer">
+              <li  className="flex items-center py-3 px-6 whitespace-nowrap text-gray-600 transition ease hover:bg-gray-100 duration-200 hover:cursor-pointer">
                 <a className="font-libre uppercase tracking-wide relative block">
                   {item.itemTitle}
                 </a>
@@ -23,7 +23,7 @@ const NavBar = () => {
           )
         })}
         {totalQuantities > 0 &&
-          <li className="flex items-center h-full px-6 whitespace-nowrap relative text-gray-600 transition ease hover:bg-gray-100 duration-200 hover:cursor-pointer" onClick={e => setShowCart(prev => !prev)}>
+          <li className="flex items-center px-6 whitespace-nowrap text-gray-600 transition ease hover:bg-gray-100 duration-200 hover:cursor-pointer" onClick={e => setShowCart(prev => !prev)}>
             <div className="relative">
               <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-xs h-4 w-4 mt-1 bg-gray-200 rounded-full">{totalQuantities}</span>
               <img src="/shopping_bag.svg" alt="shopping bag" className="min-h-[2rem] min-w-[2rem] md:h-12 opacity-40"/>

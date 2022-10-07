@@ -14,7 +14,7 @@ const Galleries = () => {
     return (
       <img
         key={idx}
-        className="flex-shrink-0 object-cover h-64 sm:h-96 bg-gray-500"
+        className="flex-shrink-0 object-cover bg-gray-500"
         src={image}
         alt={`Slide ${idx + 1}`}
         data-slide={`Slide ${idx + 1}`}
@@ -27,12 +27,13 @@ const Galleries = () => {
   })
 
   return (
-    <main className="flex flex-col items-center md:p-6 gap-0 md:gap-6 max-w-[1170px]">
-      <div className="flex items-center justify-center w-[32rem] md:w-[40rem] h-80 md:h-96 overflow-hidden relative">
+    <main className="flex flex-col items-center md:p-6 gap-0 md:gap-6">
+      <div className="flex items-center justify-center w-4/5 md:w-3/5  overflow-hidden">
         <Carousel
           defaultControlsConfig={{
             nextButtonText: " ",
             nextButtonStyle: {
+              display: 'none',
               backgroundImage: 'url("/next_chev.svg")',
               backgroundRepeat: 'no-repeat',
               backgroundColor: 'transparent',
@@ -41,8 +42,13 @@ const Galleries = () => {
               width: '2rem',
               padding: 0
             },
+            pagingDotsStyle: {
+              padding: '1rem',
+              fill: 'white'
+            },
             prevButtonText: " ",
             prevButtonStyle: {
+              display: 'none',
               backgroundImage: 'url("/previous_chev.svg")',
               backgroundRepeat: 'no-repeat',
               backgroundColor: 'transparent',
@@ -55,6 +61,9 @@ const Galleries = () => {
           dragThreshold={0}
           enableKeyboardControls={true}
           wrapAround={true}
+          animation={'fade'}
+          autoplay={true}
+          autoplayInterval={5000}
         >
           {slides}
         </Carousel>

@@ -21,13 +21,14 @@ const About = ({bio}) => {
   })
 
   return (
-    <main className="flex flex-col items-center landscape:flex-row p-6 gap-6 max-w-[1170px] md:max-h-[70vh]">
+    <main className="flex flex-col items-center landscape:flex-row  gap-8 landscape:gap-4">
       {bio.bioImages.length > 1
-        ? <div className="flex items-center justify-center w-[32rem] h-[32rem] overflow-hidden relative">
+        ? <div className="flex items-center justify-center md:w-1/2 h-auto overflow-hidden">
             <Carousel
               defaultControlsConfig={{
                 nextButtonText: " ",
                 nextButtonStyle: {
+                  display: 'none',
                   backgroundImage: 'url("/next_chev.svg")',
                   backgroundRepeat: 'no-repeat',
                   backgroundColor: 'transparent',
@@ -36,8 +37,13 @@ const About = ({bio}) => {
                   width: '2.5rem',
                   padding: 0
                 },
+                pagingDotsStyle: {
+                  padding: '1rem',
+                  fill: 'white'
+                },
                 prevButtonText: " ",
                 prevButtonStyle: {
+                  display: 'none',
                   backgroundImage: 'url("/previous_chev.svg")',
                   backgroundRepeat: 'no-repeat',
                   backgroundColor: 'transparent',
@@ -50,6 +56,9 @@ const About = ({bio}) => {
               dragThreshold={0}
               enableKeyboardControls={true}
               wrapAround={true}
+              autoplay={true}
+              autoplayInterval={8000}
+              cellSpacing={20}
             >
               {slides}
             </Carousel>
@@ -58,7 +67,7 @@ const About = ({bio}) => {
       }
       <div className={`flex flex-col justify-center ${bio.name === null ? "space-y-0" : "space-y-4"} md:w-1/2`}>
         <h2 className={`text-xl font-semibold ${bio.name === null ? "hidden" : "block"}`}>{bio.name}</h2>
-        <p className='md:leading-[1.7rem] font-light md:font-thin text-2xl md:text-lg'>{bio.text}</p>
+        <p className='font-light p-4 md:font-thin text-3xl md:leading-[1.7rem]  md:text-lg md:p-0'>{bio.text}</p>
       </div>
     </main>
   )
