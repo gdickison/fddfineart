@@ -1,13 +1,32 @@
-/* eslint-disable @next/next/no-img-element */
+import { client } from '../lib/client'
+import ReactPhotoAlbumTest from '../components/ReactPhotoAlbumTest'
 
-const TestPage = () => {
-
+export default function PhotoAlbumTest({originalPaintings}) {
+  console.log('originalPaintings', originalPaintings)
   return (
-    <main>
-      <h1>Test Page</h1>
-    </main>
+    <ReactPhotoAlbumTest
+      paintings={originalPaintings}
+    />
   )
-
 }
 
-export default TestPage
+export const getServerSideProps = async () => {
+
+  const originalPaintings = await client.fetch(
+    `*[_type == "paintings" && original_available == true && !(_id match "draft*")]{
+      "id": _id,
+      "imageUrl": image.asset->url,
+      title,
+      "slug": slug.current,
+      "original": original_available,
+      prints_available,
+      tags,
+      description,
+      order
+    }`
+  )
+
+  return {
+    props: {originalPaintings}
+  }
+}

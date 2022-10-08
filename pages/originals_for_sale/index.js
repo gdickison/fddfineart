@@ -2,7 +2,6 @@ import { client } from '../../lib/client'
 import PaintingsInCollection from '../../components/PaintingsInCollection'
 
 export default function Originals({originalPaintings}) {
-  console.log('originalPaintings', originalPaintings)
   return (
     <PaintingsInCollection
       paintings={originalPaintings}
@@ -19,6 +18,7 @@ export const getServerSideProps = async () => {
       title,
       "slug": slug.current,
       "original": original_available,
+      "dimensions": original_dimensions,
       prints_available,
       tags,
       description,

@@ -20,6 +20,7 @@
     "react-dom": "18.1.0",
     "react-hot-toast": "^2.3.0",
     "react-icons": "^4.4.0",
+    "react-photo-album": "^1.16.1",
     "stripe": "^8.222.0"
   },
   "devDependencies": {

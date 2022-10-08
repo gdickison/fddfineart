@@ -3,7 +3,6 @@ import ComingSoon from '../../components/ComingSoon'
 import PaintingsInCollection from '../../components/PaintingsInCollection'
 
 export default function PrintShop({printPaintings}) {
-  console.log('printPaintings', printPaintings)
 
   if(printPaintings.length < 1){
     return (
