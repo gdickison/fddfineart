@@ -20,6 +20,11 @@ body {
   body {
     display: flex;
   }
+
+  .react-photo-album--row {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
 }
 @media screen and (min-width:768px){
   body {
@@ -83,4 +88,8 @@ figure.hover-effect:hover .caption-container {
 
 figure.hover-effect:hover > img {
   filter: brightness(0.5);
+}
+
+.react-photo-album--row {
+  margin-bottom: 0 !important;
 }

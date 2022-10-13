@@ -10,6 +10,7 @@ module.exports = {
         cinzel: ['Cinzel']
       },
       screens: {
+        'xs': '400px',
         'landscape': '820px'
       }
     },

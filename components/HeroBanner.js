@@ -5,7 +5,7 @@ import NavBar from "./NavBar"
 const HeroBanner = () => {
   return (
     <div className="text-center py-6">
-      <div className="overflow-hidden py-0">
+      <div className="md:overflow-hidden py-0">
         <div className="hover:cursor-pointer flex justify-center">
           <Link href="/">
             {/* <a className="text-4xl font-libre uppercase text-black" style={{'letter-spacing': '0.2em'}}>Forrest Dickison Fine Art</a> */}

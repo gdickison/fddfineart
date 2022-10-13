@@ -22,7 +22,8 @@ export const getServerSideProps = async () => {
       prints_available,
       tags,
       description,
-      order
+      order,
+      "dimensions": original_dimensions
     }`
   )
 

@@ -3,7 +3,7 @@ import Link from "next/link"
 
 const ProductModal = ({original, prints, id, title, image, dimensions, slug, closeModal}) => {
   return (
-    <div key={id} className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center  w-[145vw] md:w-[100vw] h-[100vh] p-4 md:py-8 md:px-8 bg-black text-gray-100 z-50">
+    <div key={id} className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center  w-screen md:w-[100vw] h-screen md:h-[100vh] p-4 md:py-8 md:px-8 bg-black text-gray-100 z-50">
       <button className="absolute top-4 right-4 w-12 h-12 hover:cursor-pointer" onClick={closeModal}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" className="flex-shrink-0 w-8 h-8">
           <polygon points="427.314 107.313 404.686 84.687 256 233.373 107.314 84.687 84.686 107.313 233.373 256 84.686 404.687 107.314 427.313 256 278.627 404.686 427.313 427.314 404.687 278.627 256 427.314 107.313"></polygon>

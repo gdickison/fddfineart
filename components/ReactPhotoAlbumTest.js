@@ -1,7 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import { useState } from "react"
 import ProductModal from "./ProductModal"
-import { PhotoAlbum } from "react-photo-album"
+import { PhotoAlbum, PhotoProps } from 'react-photo-album'
+import Image from "next/future/image"
 
 export default function ReactPhotoAlbumTest ({paintings}) {
   const [showModal, setShowModal] = useState(false)
@@ -19,27 +20,79 @@ export default function ReactPhotoAlbumTest ({paintings}) {
   }
 
   paintings.forEach(painting => {
-    painting.gridImage = {
-      src: painting.imageUrl,
-      width: painting.imageUrl.split('-')[1].split('.')[0].split('x')[0],
-      height: painting.imageUrl.split('-')[1].split('.')[0].split('x')[1]
-    }
+    painting.width = painting.imageUrl.split('-')[1].split('.')[0].split('x')[0]
+    painting.height = painting.imageUrl.split('-')[1].split('.')[0].split('x')[1]
+    painting.src = painting.imageUrl
   })
 
-  const gridImages = paintings.map(painting => {
+  const renderPhoto = ({photo}) => {
+    return (
+      <figure
+        key={photo.id}
+        className="flex grow hover-effect relative"
+        onClick={!photo.placeholder ? e => openModal(e, photo.original, photo.prints, photo.id, photo.title, photo.image, photo.dimensions, photo.slug) : e => e.preventDefault()}
+      >
+        <img
+          src={photo.src}
+          width={100}
+          // height={200}
+          alt={photo.title}
+          className="grow p-2 object-contain hover:cursor-pointer"
+        />
+        <figcaption>
+          <div className="caption-container hover:cursor-pointer font-libre">
+            <h4 className="text-xl">
+              {photo.title}
+            </h4>
+            <div className="text-sm">
+
+            <p>
+              {photo.dimensions}
+            </p>
+            {!photo.placeholder &&
+              <>
+                <p>
+                  Original {photo.original ? 'Available' : 'Sold'}
+                </p>
+                <p>
+                  {photo.prints ? 'Prints Available' : ''}
+                </p>
+              </>
+            }
+            </div>
+          </div>
+        </figcaption>
+      </figure>
+    )
+  }
+
+  const photos = paintings.map((painting, idx) => {
     return {
-      src: painting.imageUrl,
-      width: painting.imageUrl.split('-')[1].split('.')[0].split('x')[0],
-      height: painting.imageUrl.split('-')[1].split('.')[0].split('x')[1]
+      src: painting.src,
+      width: Number(painting.width),
+      height: Number(painting.height),
+      placeholder: painting.placeholder,
+      original: (painting.original).toString(),
+      prints: painting.prints,
+      id: painting.id,
+      title: painting.title,
+      image: painting.imageUrl,
+      dimensions: painting.dimensions,
+      slug: painting.slug,
+      sizes: painting.sizes
     }
   })
-
 
   return (
     <div>
-      <section className="flex flex-wrap max-w-[1170px] mx-auto">
-      {console.log('gridImages', gridImages)}
-      <PhotoAlbum layout="rows" photos={gridImages}/>
+    {console.log('photos', photos)}
+      <PhotoAlbum
+        photos={photos}
+        layout={"rows"}
+        targetRowHeight={360}
+        renderPhoto={renderPhoto}
+      />
+      {/* <section className="flex flex-wrap max-w-[1170px] mx-auto">
         {paintings.map((painting, idx) => (
           <>
           {console.log('painting', painting)}
@@ -79,7 +132,7 @@ export default function ReactPhotoAlbumTest ({paintings}) {
             </figure>
           </>
         ))}
-      </section>
+      </section> */}
       {showModal &&
         <ProductModal
           original={modalContents.original}

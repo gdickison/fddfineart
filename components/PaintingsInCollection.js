@@ -19,7 +19,7 @@ export default function PaintingsInCollection ({paintings}) {
 
   return (
     <div>
-      <section className="flex flex-wrap max-w-[1170px] mx-auto">
+      <section className="flex flex-col md:flex-row flex-wrap max-w-[1170px] mx-auto">
         {paintings.map((painting, idx) => (
           <figure
             key={idx}
@@ -29,7 +29,7 @@ export default function PaintingsInCollection ({paintings}) {
             <img
               src={painting.imageUrl}
               alt={painting.title}
-              className="grow h-72 m-2 object-center object-cover hover:cursor-pointer"
+              className="grow md:h-72 my-2 md:m-2 px-4 md:px-0 object-center object-cover hover:cursor-pointer"
             />
             <figcaption>
               <div className="caption-container hover:cursor-pointer font-libre">
