@@ -18,16 +18,14 @@ function MyApp({ Component, pageProps }) {
             containerStyle={{
               positon: 'absolute',
               top: '25%',
-              left: '20%',
               bottom: '25%',
-              right: '20%',
             }}
             toastOptions={{
               style: {
                 minWidth: 'fit-content',
                 backgroundColor: '#fff',
                 border: '1px solid #000',
-                padding: '2rem 4rem',
+                padding: '2rem',
                 color: '#000',
                 boxShadow:' 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'
               },

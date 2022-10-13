@@ -55,18 +55,18 @@ const ProductDetailsPage = ({productDetails, frameOptions, sizeOptions, mediaOpt
 
       <section className="text-gray-600 body-font mx-4">
         <div className="container mx-auto max-w-[1400px]">
-          <div className="mx-auto flex flex-col md:flex-row justify-center gap-16">
-            <div className="w-1/2 m-auto">
+          <div className="mx-auto flex flex-col md:flex-row justify-center gap-8 md:gap-16">
+            <div className="md:w-1/2 m-auto">
               <img  src={image} alt={title} />
             </div>
-            <div className="lg:w-1/2 w-full mb-6 lg:mb-0 flex flex-col justify-center gap-4">
-              <div>
+            <div className="md:w-1/2 w-full mb-6 lg:mb-0 flex flex-col justify-center gap-4">
+              <div className="text-center md:text-left">
                 <h1 className="text-black text-3xl title-font font-thin mb-4">{title}</h1>
                 <p className="leading-relaxed mb-4  font-thin text-black">{description}</p>
               </div>
               {original &&
                 <div>
-                <h2 className="text-black text-2xl title-font font-thin mb-4">Purchase the Original</h2>
+                <h2 className="text-black text-2xl title-font font-thin mb-4 text-center md:text-left">Purchase the Original</h2>
                   <div className="flex justify-between border-t border-gray-200 py-2 items-center">
                     <span className="title-font text-xl mx-2 text-black" >{new Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD', maximumFractionDigits: 0}).format(original_price)}</span>
                     <div className="w-1/2 mx-2">
