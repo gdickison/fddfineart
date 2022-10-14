@@ -40,14 +40,14 @@ const Cart = () => {
 
   return (
     <div className="fixed inset-0 overflow-auto z-50" ref={cartRef}>
-      <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col w-[98%] landscape:w-3/4 max-w-4xl h-fit overflow-scroll landscape:max-h-[100vh] landscape:min-h-[25vh] p-3 landscape:p-6 space-y-4 sm:p-10 text-gray-900 border-2 shadow-xl bg-white">
-        <button className="absolute top-4 right-4 md:top-6 md:right-6 w-12 h-12 hover:cursor-pointer" onClick={() => setShowCart(false)}>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" className="flex-shrink-0 w-8 h-8">
+      <div className={`fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col w-[98%] landscape:w-3/4 max-w-4xl h-fit overflow-scroll landscape:max-h-[100vh] landscape:min-h-[25vh] p-6 landscape:p-10 ${cartItems.length === 0 ? '' : 'space-y-4'} sm:p-6 text-gray-900 border-2 shadow-xl bg-white`}>
+        <button className={`absolute ${cartItems.length === 0 ? 'top-1/2 -translate-y-1/2 right-4' : 'top-3 right-4 md:top-6 md:right-6'} w-12 hover:cursor-pointer`} onClick={() => setShowCart(false)}>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" className="flex-shrink-0 w-6 md:w-8">
             <polygon points="427.314 107.313 404.686 84.687 256 233.373 107.314 84.687 84.686 107.313 233.373 256 84.686 404.687 107.314 427.313 256 278.627 404.686 427.313 427.314 404.687 278.627 256 427.314 107.313"></polygon>
           </svg>
         </button>
         {cartItems.length === 0 &&
-          <div className="h-full flex flex-col flex-grow justify-center items-center text-lg">
+          <div className="text-lg text-left my-auto xs:text-center">
             <p>Your Cart is Empty</p>
           </div>
         }

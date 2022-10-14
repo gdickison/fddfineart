@@ -23,7 +23,7 @@ const About = ({bio}) => {
   return (
     <main className="flex flex-col items-center landscape:flex-row  gap-8 landscape:gap-4">
       {bio.bioImages.length > 1
-        ? <div className="flex items-center justify-center md:w-1/2 h-auto overflow-hidden">
+        ? <div className="flex items-center justify-center sm:w-2/3 md:w-1/2 h-auto overflow-hidden">
             <Carousel
               defaultControlsConfig={{
                 nextButtonText: " ",
@@ -65,9 +65,9 @@ const About = ({bio}) => {
           </div>
         : <img src={bio.bioImages[0]} alt="" className="flex-shrink-0 object-cover aspect-square w-full md:w-1/2" />
       }
-      <div className={`flex flex-col justify-center ${bio.name === null ? "space-y-0" : "space-y-4"} md:w-1/2`}>
+      <div className={`flex flex-col justify-center ${bio.name === null ? "space-y-0" : "space-y-4"} sm:w-2/3 md:w-1/2 landscape:pr-6 text-justify`}>
         <h2 className={`text-xl font-semibold ${bio.name === null ? "hidden" : "block"}`}>{bio.name}</h2>
-        <p className='font-light p-4 md:font-thin text-3xl md:leading-[1.7rem]  md:text-lg md:p-0'>{bio.text}</p>
+        <p className='font-thin md:leading-[1.7rem] md:text-lg p-4 md:p-0'>{bio.text}</p>
       </div>
     </main>
   )
