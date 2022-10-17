@@ -12,8 +12,11 @@ module.exports = {
       screens: {
         'xs': '400px',
         'landscape': '820px'
+      },
+      fontSize: {
+        'navland': ['1rem', '2rem']
       }
-    },
+    }
   },
   plugins: [],
 }

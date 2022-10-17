@@ -22,11 +22,11 @@ const NavBar = () => {
               <img src="/menu_black_24dp.svg" className="h-6 w-6" aria-hidden="true" />
             </Popover.Button>
           </div>
-          <div className="hidden md:flex space-x-8 font-libre tracking-wider justify-between md:flex-1 lg:w-0">
+          <div className="hidden md:flex font-libre tracking-wider justify-between md:flex-1">
             {navMenuItems.map(item => {
               return (
                 <Link key={item.itemTitle} href={item.itemLink}>
-                  <a className={`py-2 px-4 whitespace-nowrap text-lg font-medium ${router.pathname === item.itemLink ? 'border-b border-gray-200' : ''}`}>
+                  <a className={`py-2 px-4 whitespace-nowrap text-sm lg:text-navland font-medium ${router.pathname === item.itemLink ? 'border-b border-gray-200' : ''}`}>
                     {item.itemTitle}
                   </a>
                 </Link>
@@ -36,7 +36,7 @@ const NavBar = () => {
               <div className="flex items-center px-6 whitespace-nowrap text-gray-600 transition ease hover:bg-gray-100 duration-200 hover:cursor-pointer" onClick={e => setShowCart(prev => !prev)}>
                 <div className="relative">
                   <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-xs h-4 w-4 mt-1 bg-gray-200 rounded-full">{totalQuantities}</span>
-                  <img src="/shopping_bag.svg" alt="shopping bag" className="min-h-[2rem] min-w-[2rem] md:h-12 opacity-40"/>
+                  <img src="/shopping_bag.svg" alt="shopping bag" className="min-h-[2rem] min-w-[2rem] h-9 lg:h-12 opacity-40"/>
                 </div>
               </div>
             }
