@@ -9,7 +9,7 @@ export default function Originals({originalPaintings}) {
   )
 }
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
 
   const originalPaintings = await client.fetch(
     `*[_type == "paintings" && original_available == true && !(_id match "draft*")]{

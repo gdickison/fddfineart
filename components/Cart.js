@@ -1,11 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
-import { useRef } from "react"
 import toast from "react-hot-toast"
 import { useStateContext } from "../context/StateContext"
 import getStripe from "../lib/getStripe"
 
 const Cart = () => {
-  const cartRef = useRef()
   const { setShowCart, cartItems, removeFromCart } = useStateContext()
 
   const priceArray = cartItems.map(item => {
@@ -39,7 +37,7 @@ const Cart = () => {
   }
 
   return (
-    <div className="fixed inset-0 overflow-auto z-50" ref={cartRef}>
+    <div className="fixed inset-0 overflow-auto z-50">
       <div className={`fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col w-[98%] landscape:w-3/4 max-w-4xl h-fit overflow-scroll landscape:max-h-[100vh] landscape:min-h-[25vh] p-6 landscape:p-10 ${cartItems.length === 0 ? '' : 'space-y-4'} sm:p-6 text-gray-900 border-2 shadow-xl bg-white`}>
         <button className={`absolute ${cartItems.length === 0 ? 'top-1/2 -translate-y-1/2 right-4' : 'top-3 right-4 md:top-6 md:right-6'} w-12 hover:cursor-pointer`} onClick={() => setShowCart(false)}>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" className="flex-shrink-0 w-6 md:w-8">
