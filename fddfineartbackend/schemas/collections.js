@@ -1,6 +1,6 @@
 export default {
-  name: 'shows',
-  title: 'Shows',
+  name: 'collections',
+  title: 'Collections',
   type: 'document',
   fields: [
     {
@@ -23,13 +23,8 @@ export default {
       type: 'text'
     },
     {
-      name: 'is_current',
-      title: 'Is this the current show?',
-      type: 'boolean'
-    },
-    {
       name: 'paintings',
-      title: 'Paintings in Show',
+      title: 'Paintings in Collection',
       type: 'array',
       of: [
         {

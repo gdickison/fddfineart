@@ -5,6 +5,7 @@ import createSchema from 'part:@sanity/base/schema-creator'
 import schemaTypes from 'all:part:@sanity/base/schema-type'
 import bio from './bio'
 import blockContent from './blockContent'
+import collections from './collections'
 import frame from './frame'
 import media from './media'
 import paintings from './paintings'
@@ -21,6 +22,7 @@ export default createSchema({
     /* Your types here! */
     bio,
     blockContent,
+    collections,
     frame,
     media,
     paintings,
