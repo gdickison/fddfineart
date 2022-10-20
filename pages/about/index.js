@@ -75,7 +75,7 @@ const About = ({bio}) => {
 
 export default About
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
 
   const bio = await client.fetch(
     `*[_type == "bio"]{

@@ -9,7 +9,7 @@ export default function Home({show}) {
   )
 }
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
 
   const show = await client.fetch(
     `*[_type == "shows" && is_current == true]{
