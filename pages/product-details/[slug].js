@@ -186,6 +186,7 @@ export const getStaticProps = async (context) => {
       frameOptions,
       sizeOptions,
       mediaOptions
-    }
+    },
+    revalidate: 10
   }
 }
