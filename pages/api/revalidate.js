@@ -12,9 +12,9 @@ console.log('req.body', req.body)
     ){
       return res.status(401).json({ message: 'Invalid request' })
     }
-    const {slug} = req.body
-    await res.revalidate(`/product-details/${slug}`)
-    console.log('slug', slug)
+
+    await res.revalidate(`/product-details/${req.body.slug}`)
+    console.log('slug', req.body.slug)
     res.status(200).json({ message: 'Painting details revalidated' })
   } catch (err) {
     return res.status(500).send(req.body)
