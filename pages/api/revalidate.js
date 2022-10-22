@@ -17,6 +17,6 @@ console.log('req.body', req.body)
     console.log('slug', slug)
     res.status(200).json({ message: 'Painting details revalidated' })
   } catch (err) {
-    return res.status(500).send(`${req.body}`)
+    return res.status(500).send(req.body)
   }
 }
