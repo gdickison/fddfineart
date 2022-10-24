@@ -126,24 +126,7 @@ const ProductDetailsPage = ({productDetails, frameOptions, sizeOptions, mediaOpt
 
 export default ProductDetailsPage
 
-export const getStaticPaths = async () => {
-  const products = await client.fetch(`*[_type == "paintings"] {
-    slug {
-      current
-    }
-  }`)
-
-  const paths = products.map(product => {
-    return {params: {slug: product.slug.current}}
-  })
-
-  return {
-    paths,
-    fallback: false
-  }
-}
-
-export const getStaticProps = async (context) => {
+export const getServerSideProps = async (context) => {
   const productDetails = await client.fetch(`*[_type == "paintings" && slug.current == "${context.params.slug}"]{
     "id": _id,
     title,
