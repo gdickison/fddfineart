@@ -7,16 +7,13 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 const About = ({bio}) => {
   const slides = bio.bioImages.map((image, idx) => {
     return (
-      <>
-        <img
-          key={idx}
-          className="flex-shrink-0 object-cover aspect-square px-1 w-full swiper-lazy"
-          data-src={image}
-          alt={`Slide ${idx + 1}`}
-          data-slide={`Slide ${idx + 1}`}
-        />
-        <div className="swiper-lazy-preloader"></div>
-      </>
+      <img
+        key={idx}
+        className="flex-shrink-0 object-cover aspect-square px-1 w-full swiper-lazy"
+        data-src={image}
+        alt={`Slide ${idx + 1}`}
+        data-slide={`Slide ${idx + 1}`}
+      />
     )
   })
 
@@ -24,7 +21,7 @@ const About = ({bio}) => {
     <main className="flex flex-col items-center landscape:flex-row  gap-8">
       <div className='flex items-center justify-center sm:w-2/3 md:w-1/2 h-auto overflow-hidden'>
         <Swiper
-          id="swiper-bio-custom"
+          id="swiper-custom"
           modules={[
             Autoplay,
             Lazy,
