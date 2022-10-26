@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
-import Carousel from "nuka-carousel";
 import Link from "next/link";
+import { Autoplay, Lazy, Pagination } from 'swiper'
+import { Swiper, SwiperSlide } from 'swiper/react'
 
 const Galleries = () => {
   const mtImages = [
@@ -14,7 +15,7 @@ const Galleries = () => {
     return (
       <img
         key={idx}
-        className="flex-shrink-0 object-cover bg-gray-500"
+        className="flex-shrink-0 object-contain"
         src={image}
         alt={`Slide ${idx + 1}`}
         data-slide={`Slide ${idx + 1}`}
@@ -29,44 +30,36 @@ const Galleries = () => {
   return (
     <main className="flex flex-col items-center md:p-6 gap-0 md:gap-6">
       <div className="flex items-center justify-center w-4/5 md:w-3/5  overflow-hidden">
-        <Carousel
-          defaultControlsConfig={{
-            nextButtonText: " ",
-            nextButtonStyle: {
-              display: 'none',
-              backgroundImage: 'url("/next_chev.svg")',
-              backgroundRepeat: 'no-repeat',
-              backgroundColor: 'transparent',
-              backgroundPosition: 'left',
-              height: '2rem',
-              width: '2rem',
-              padding: 0
-            },
-            pagingDotsStyle: {
-              padding: '1rem',
-              fill: 'white'
-            },
-            prevButtonText: " ",
-            prevButtonStyle: {
-              display: 'none',
-              backgroundImage: 'url("/previous_chev.svg")',
-              backgroundRepeat: 'no-repeat',
-              backgroundColor: 'transparent',
-              backgroundPosition: 'right',
-              height: '2rem',
-              width: '2rem',
-              padding: 0
-            }
+      <Swiper
+          id="swiper-custom"
+          modules={[
+            Autoplay,
+            Lazy,
+            Pagination
+          ]}
+          autoplay={{
+            delay: 5000
           }}
-          dragThreshold={0}
-          enableKeyboardControls={true}
-          wrapAround={true}
-          animation={'fade'}
-          autoplay={true}
-          autoplayInterval={5000}
+          lazy={{
+            enabled: true,
+            loadOnTransitionStart: true,
+            loadingClass: 'swiper-lazy-loading'
+          }}
+          loop={true}
+          onSlideChange={() => console.log('slide change')}
+          onSwiper={(swiper) => console.log(swiper)}
+          pagination={{ clickable: true }}
+          slidesPerView={1}
+          spaceBetween={50}
         >
-          {slides}
-        </Carousel>
+          {slides.map((slide, idx) => {
+            return (
+              <SwiperSlide key={idx}>
+                {slide}
+              </SwiperSlide>
+            )
+          })}
+        </Swiper>
       </div>
       <div className="flex flex-col items-center md:gap-4">
         <Link href="https://www.montanagallery.net/forrest-dickison">

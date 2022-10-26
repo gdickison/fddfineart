@@ -46,18 +46,14 @@ a {
 /* hover code from shopify */
 
 figure {
-  /* display: inline-block; */
-  /* overflow: hidden; */
   position: relative;
 }
 
 figure.hover-effect {
-  /* background: rgba(0, 0, 0, 0.7); */
   margin: 0;
 }
 
 figure img {
-  /* display: block; */
   transition: .5s ease-in-out;
 }
 
@@ -92,4 +88,144 @@ figure.hover-effect:hover > img {
 
 .react-photo-album--row {
   margin-bottom: 0 !important;
+}
+
+#swiper-custom > .swiper-button-next,
+#swiper-gallery > .swiper-button-next {
+  background-image: url(/next_chev.svg);
+}
+
+#swiper-custom > .swiper-button-prev,
+#swiper-gallery > .swiper-button-prev {
+  background-image: url(/previous_chev.svg)
+}
+
+#swiper-custom > .swiper-button-next,
+#swiper-custom > .swiper-button-prev {
+  position: absolute;
+  bottom: 0;
+  top: auto;
+  z-index: 15;
+  background-size: 3rem;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#swiper-gallery > .swiper-button-next,
+#swiper-gallery > .swiper-button-prev {
+  position: absolute;
+  z-index: 15;
+  background-size: 6rem;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#swiper-custom > .swiper-button-next::after,
+#swiper-custom > .swiper-button-prev::after,
+#swiper-gallery > .swiper-button-next::after,
+#swiper-gallery > .swiper-button-prev::after {
+  display: none
+}
+
+#swiper-custom .swiper-pagination-bullet {
+  background: var(--swiper-pagination-bullet-inactive-color,#9ca3af);
+  opacity: 100;
+  margin-inline: 1.5rem;
+  width: 0.65rem;
+  height: 0.65rem;
+}
+
+#swiper-custom .swiper-pagination-bullet-active {
+  background: #007aff;
+}
+
+#swiper-gallery {
+  margin-block: auto;
+}
+
+#swiper-gallery .swiper-slide {
+  padding-bottom: 2.5rem;
+}
+
+#swiper-custom,
+#swiper-gallery {
+  width: 340px;
+}
+
+@media screen and (min-width: 375px) {
+  #swiper-custom,
+  #swiper-gallery {
+    width: 375px;
+  }
+
+  .swiper-gallery-caption {
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
+}
+
+@media screen and (min-width: 480px) {
+  #swiper-custom,
+  #swiper-gallery {
+    width: 480px;
+  }
+
+  .swiper-gallery-caption {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+}
+
+@media screen and (min-width: 640px) {
+  #swiper-custom ,
+  #swiper-cgallery {
+    width: 640px;
+  }
+
+  .swiper-gallery-caption {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  #swiper-custom ,
+  #swiper-cgallery {
+    width: 768px;
+  }
+}
+
+@media screen and (min-width: 820px) {
+  #swiper-custom,
+  #swiper-gallery {
+    width: 820px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  #swiper-custom,
+  #swiper-gallery {
+    width: 1024px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  #swiper-custom,
+  #swiper-gallery {
+    width: 1280px;
+  }
+}
+
+@media screen and (min-width: 1536px) {
+  #swiper-custom,
+  #swiper-gallery {
+    width: 1536px;
+  }
+}
+
+@media screen and (max-width: 820px) {
+  #swiper-custom > .swiper-button-next,
+  #swiper-custom > .swiper-button-prev {
+    display: none;
+  }
 }
