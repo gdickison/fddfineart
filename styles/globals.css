@@ -90,11 +90,13 @@ figure.hover-effect:hover > img {
   margin-bottom: 0 !important;
 }
 
-#swiper-custom > .swiper-button-next {
+#swiper-custom > .swiper-button-next,
+#swiper-gallery > .swiper-button-next {
   background-image: url(/next_chev.svg);
 }
 
-#swiper-custom > .swiper-button-prev {
+#swiper-custom > .swiper-button-prev,
+#swiper-gallery > .swiper-button-prev {
   background-image: url(/previous_chev.svg)
 }
 
@@ -109,8 +111,19 @@ figure.hover-effect:hover > img {
   background-position: center;
 }
 
+#swiper-gallery > .swiper-button-next,
+#swiper-gallery > .swiper-button-prev {
+  position: absolute;
+  z-index: 15;
+  background-size: 6rem;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 #swiper-custom > .swiper-button-next::after,
-#swiper-custom > .swiper-button-prev::after {
+#swiper-custom > .swiper-button-prev::after,
+#swiper-gallery > .swiper-button-next::after,
+#swiper-gallery > .swiper-button-prev::after {
   display: none
 }
 
@@ -126,23 +139,87 @@ figure.hover-effect:hover > img {
   background: #007aff;
 }
 
-#swiper-custom {
-  width: 375px;
+#swiper-gallery {
+  margin-block: auto;
+}
+
+#swiper-gallery .swiper-slide {
+  padding-bottom: 2.5rem;
+}
+
+#swiper-custom,
+#swiper-gallery {
+  width: 340px;
+}
+
+@media screen and (min-width: 375px) {
+  #swiper-custom,
+  #swiper-gallery {
+    width: 375px;
+  }
+
+  .swiper-gallery-caption {
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
 }
 
 @media screen and (min-width: 480px) {
-  #swiper-custom {
+  #swiper-custom,
+  #swiper-gallery {
     width: 480px;
   }
-}
-@media screen and (min-width: 640px) {
-  #swiper-custom  {
-    width: 640px;
+
+  .swiper-gallery-caption {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
   }
 }
+
+@media screen and (min-width: 640px) {
+  #swiper-custom ,
+  #swiper-cgallery {
+    width: 640px;
+  }
+
+  .swiper-gallery-caption {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+}
+
 @media screen and (min-width: 768px) {
-  #swiper-custom  {
+  #swiper-custom ,
+  #swiper-cgallery {
     width: 768px;
+  }
+}
+
+@media screen and (min-width: 820px) {
+  #swiper-custom,
+  #swiper-gallery {
+    width: 820px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  #swiper-custom,
+  #swiper-gallery {
+    width: 1024px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  #swiper-custom,
+  #swiper-gallery {
+    width: 1280px;
+  }
+}
+
+@media screen and (min-width: 1536px) {
+  #swiper-custom,
+  #swiper-gallery {
+    width: 1536px;
   }
 }
 

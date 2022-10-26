@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
-import { Autoplay, Lazy, Pagination } from 'swiper';
+import { Autoplay, Lazy, Pagination } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
 const Galleries = () => {
