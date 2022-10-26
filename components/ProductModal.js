@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link"
-import { Navigation } from 'swiper'
+import { Mousewheel, Navigation } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
 const ProductModal = ({idx, paintings, closeModal}) => {
@@ -40,9 +40,11 @@ const ProductModal = ({idx, paintings, closeModal}) => {
       <Swiper
         id="swiper-gallery"
         modules={[
+          Mousewheel,
           Navigation
         ]}
         loop={true}
+        mousewheel={true}
         navigation={true}
         onSwiper={swiper => {
           swiper.slideTo(idx + 1, 0, false)
