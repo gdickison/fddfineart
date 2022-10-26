@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useStateContext } from "../../context/StateContext";
 import { Mousewheel, Navigation, Pagination, Thumbs } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
+import ProductDetailModal from "../../components/ProductDetailModal";
 
 const ProductDetailsPage = ({productDetails, frameOptions, sizeOptions, mediaOptions}) => {
   const { addToCart } = useStateContext()
@@ -11,6 +12,20 @@ const ProductDetailsPage = ({productDetails, frameOptions, sizeOptions, mediaOpt
   const [selectedSize, setSelectedSize] = useState({'id': sizeOptions[0].id, 'style': sizeOptions[0].size, 'price': sizeOptions[0].price})
   const [selectedMedia, setSelectedMedia] = useState({'id': mediaOptions[0].id, 'style': mediaOptions[0].style, 'price': mediaOptions[0].price})
   const [thumbsSwiper, setThumbsSwiper] = useState(null)
+
+  const [showModal, setShowModal] = useState(false)
+  const [modalContents, setModalContents] = useState()
+
+  const openModal = (e, i, slides) => {
+    e.preventDefault()
+    setShowModal(true)
+    setModalContents({ i, slides})
+  }
+
+  const closeModal = e => {
+    e.preventDefault()
+    setShowModal(false)
+  }
 
   const handleSizeChange = e => {
     e.preventDefault()
@@ -86,7 +101,9 @@ const ProductDetailsPage = ({productDetails, frameOptions, sizeOptions, mediaOpt
                       {slides.map((slide, i) => {
                         return (
                           <SwiperSlide key={i}>
-                            {slide}
+                            <div onClick={e => openModal(e, i, slides)} className="hover:cursor-pointer">
+                              {slide}
+                            </div>
                           </SwiperSlide>
                         )
                       })}
@@ -175,6 +192,13 @@ const ProductDetailsPage = ({productDetails, frameOptions, sizeOptions, mediaOpt
             </div>
           </div>
         </div>
+        {showModal &&
+          <ProductDetailModal
+            idx={modalContents.i}
+            images={modalContents.slides}
+            closeModal={closeModal}
+          />
+        }
       </section>
 
   )
