@@ -38,8 +38,6 @@ const About = ({bio}) => {
           }}
           loop={true}
           navigation
-          onSlideChange={() => console.log('slide change')}
-          onSwiper={(swiper) => console.log(swiper)}
           pagination={{ clickable: true }}
           slidesPerView={1}
           spaceBetween={50}

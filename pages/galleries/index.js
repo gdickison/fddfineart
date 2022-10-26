@@ -46,8 +46,6 @@ const Galleries = () => {
             loadingClass: 'swiper-lazy-loading'
           }}
           loop={true}
-          onSlideChange={() => console.log('slide change')}
-          onSwiper={(swiper) => console.log(swiper)}
           pagination={{ clickable: true }}
           slidesPerView={1}
           spaceBetween={50}

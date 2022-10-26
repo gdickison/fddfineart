@@ -4,9 +4,6 @@ import { Navigation } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
 const ProductModal = ({idx, paintings, closeModal}) => {
-  console.log('idx', idx)
-  console.log('paintings', paintings)
-
   const slides = paintings.map((painting) => {
     return (
       <>
