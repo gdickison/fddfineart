@@ -1,31 +1,16 @@
 /* eslint-disable @next/next/no-img-element */
-import Link from "next/link"
 import { Mousewheel, Navigation } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
-const ProductModal = ({idx, paintings, closeModal}) => {
-  const slides = paintings.map((painting) => {
+const ProductDetailModal = ({idx, images, closeModal}) => {
+  const slides = images.map((image) => {
     return (
       <>
         <img
-          src={painting.imageUrl}
-          alt={painting.title}
+          src={image.props.src}
+          alt={image.props.alt}
           className="w-full h-full object-contain"
         />
-        <p className="swiper-gallery-caption text-center text-xs sm:text-base md:text-lg text-gray-200 pt-2">
-          <span className="font-libre">{painting.title}</span>
-          <span>{` - `}</span>
-          <span className="font-libre">{painting.dimensions}</span>
-          <span>{` - `}</span>
-          {(painting.original || painting.prints) &&
-            <Link href={`/product-details/${painting.slug}`}>
-              <span className="underline font-libre hover:text-gray-400 hover:cursor-pointer">See Purchase Options</span>
-            </Link>
-          }
-          {!painting.original && !painting.prints  &&
-              <span className="underline font-libre hover:text-gray-400 hover:cursor-pointer" onClick={closeModal}>Back to Show</span>
-          }
-        </p>
       </>
     )
   })
@@ -63,4 +48,4 @@ const ProductModal = ({idx, paintings, closeModal}) => {
     </div>
   )
 }
-export default ProductModal
+export default ProductDetailModal

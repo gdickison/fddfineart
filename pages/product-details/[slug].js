@@ -2,13 +2,30 @@
 import { client } from "../../lib/client";
 import { useState } from "react";
 import { useStateContext } from "../../context/StateContext";
+import { Mousewheel, Navigation, Pagination, Thumbs } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+import ProductDetailModal from "../../components/ProductDetailModal";
 
 const ProductDetailsPage = ({productDetails, frameOptions, sizeOptions, mediaOptions}) => {
   const { addToCart } = useStateContext()
-
   const [selectedFrame, setSelectedFrame] = useState({'id': frameOptions[0].id, 'style': frameOptions[0].style, 'price': frameOptions[0].price})
   const [selectedSize, setSelectedSize] = useState({'id': sizeOptions[0].id, 'style': sizeOptions[0].size, 'price': sizeOptions[0].price})
   const [selectedMedia, setSelectedMedia] = useState({'id': mediaOptions[0].id, 'style': mediaOptions[0].style, 'price': mediaOptions[0].price})
+  const [thumbsSwiper, setThumbsSwiper] = useState(null)
+
+  const [showModal, setShowModal] = useState(false)
+  const [modalContents, setModalContents] = useState()
+
+  const openModal = (e, i, slides) => {
+    e.preventDefault()
+    setShowModal(true)
+    setModalContents({ i, slides})
+  }
+
+  const closeModal = e => {
+    e.preventDefault()
+    setShowModal(false)
+  }
 
   const handleSizeChange = e => {
     e.preventDefault()
@@ -37,7 +54,7 @@ const ProductDetailsPage = ({productDetails, frameOptions, sizeOptions, mediaOpt
     })
   }
 
-  const { id, title, image, original, original_price, original_dimensions, prints, slug, tags, description } = productDetails
+  const { id, title, image, wallImages, original, original_price, original_dimensions, prints, slug, tags, description } = productDetails
 
   const handleAddOriginalToCart = e => {
     e.preventDefault()
@@ -51,13 +68,69 @@ const ProductDetailsPage = ({productDetails, frameOptions, sizeOptions, mediaOpt
     addToCart({cartId, id, title, image, selectedFrame, selectedMedia, selectedSize})
   }
 
-  return (
+  const paintingImages = wallImages !== null ? image.concat(wallImages) : image
 
+  const slides = paintingImages.map((image, idx) => {
+    return (
+      <img key={idx} src={image} alt={title} />
+    )
+  })
+
+  return (
       <section className="text-gray-600 body-font mx-4">
         <div className="container mx-auto max-w-[1400px]">
           <div className="mx-auto flex flex-col md:flex-row justify-center gap-8 md:gap-16">
-            <div className="md:w-1/2 m-auto">
-              <img  src={image} alt={title} />
+            <div className="md:w-1/2 m-auto flex flex-row-reverse">
+              {slides && slides.length > 1
+                ?
+                  <>
+                    <Swiper
+                      id="swiper-product-details"
+                      modules={[
+                        Mousewheel,
+                        Navigation,
+                        Pagination,
+                        Thumbs
+                      ]}
+                      loop={true}
+                      mousewheel={true}
+                      navigation={true}
+                      pagination={{clickable: true}}
+                      thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
+                    >
+                      {slides.map((slide, i) => {
+                        return (
+                          <SwiperSlide key={i}>
+                            <div onClick={e => openModal(e, i, slides)} className="hover:cursor-pointer">
+                              {slide}
+                            </div>
+                          </SwiperSlide>
+                        )
+                      })}
+                    </Swiper>
+                    <Swiper
+                      id="swiper-thumbs"
+                      direction={'vertical'}
+                      modules={[
+                        Mousewheel,
+                        Thumbs
+                      ]}
+                      mousewheel={true}
+                      onSwiper={setThumbsSwiper}
+                      slidesPerView={3}
+                      watchSlidesProgress={true}
+                    >
+                      {slides.map((slide, i) => {
+                        return (
+                          <SwiperSlide key={i}>
+                            {slide}
+                          </SwiperSlide>
+                        )
+                      })}
+                    </Swiper>
+                  </>
+                : <img src={slides[0].props.src} alt={slides[0].props.alt} />
+              }
             </div>
             <div className="md:w-1/2 w-full mb-6 lg:mb-0 flex flex-col justify-center gap-4">
               <div className="text-center md:text-left">
@@ -119,6 +192,13 @@ const ProductDetailsPage = ({productDetails, frameOptions, sizeOptions, mediaOpt
             </div>
           </div>
         </div>
+        {showModal &&
+          <ProductDetailModal
+            idx={modalContents.i}
+            images={modalContents.slides}
+            closeModal={closeModal}
+          />
+        }
       </section>
 
   )
@@ -130,7 +210,8 @@ export const getServerSideProps = async (context) => {
   const productDetails = await client.fetch(`*[_type == "paintings" && slug.current == "${context.params.slug}"]{
     "id": _id,
     title,
-    "image": image.asset->url,
+    "image": [image.asset->url],
+    "wallImages": wall_images[].asset->url,
     placeholder,
     "original": original_available,
     original_price,
