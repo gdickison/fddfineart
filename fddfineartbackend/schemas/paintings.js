@@ -17,6 +17,19 @@ export default {
       }
     },
     {
+      name: 'wall_images',
+      title: 'Wall Images',
+      type: 'array',
+      of: [
+        {
+          type: 'image',
+          options: {
+            hotspot: true
+          }
+        }
+      ]
+    },
+    {
       name: 'placeholder',
       title: 'This is a placeholder image',
       description: 'Turn this on if this is a placeholder and not a product for sale',

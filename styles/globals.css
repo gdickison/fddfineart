@@ -229,3 +229,25 @@ figure.hover-effect:hover > img {
     display: none;
   }
 }
+
+#swiper-product-details {
+  width: 75%;
+}
+
+#swiper-product-details .swiper-slide {
+  height: auto;
+  margin-block: auto;
+}
+
+#swiper-thumbs {
+  width: 20%;
+  max-height: 500px
+}
+
+#swiper-thumbs .swiper-slide {
+  height: 150px;
+}
+
+#swiper-thumbs img:hover {
+  cursor: pointer;
+}
