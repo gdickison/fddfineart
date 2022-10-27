@@ -2,9 +2,10 @@ import { client } from '../../lib/client'
 import PaintingsInCollection from '../../components/PaintingsInCollection'
 
 export default function Originals({originalPaintings}) {
+
   return (
     <PaintingsInCollection
-      paintings={originalPaintings}
+      paintings={originalPaintings[0].originals}
     />
   )
 }
@@ -12,17 +13,20 @@ export default function Originals({originalPaintings}) {
 export const getServerSideProps = async () => {
 
   const originalPaintings = await client.fetch(
-    `*[_type == "paintings" && original_available == true && !(_id match "draft*")]{
-      "id": _id,
-      "imageUrl": image.asset->url,
-      title,
-      "slug": slug.current,
-      "original": original_available,
-      "dimensions": original_dimensions,
-      prints_available,
-      tags,
-      description,
-      order
+    `*[_type == "collections" && title == "Originals For Sale"]{
+      "originals": paintings[]->{
+        "id": _id,
+        title,
+        "imageUrl": image.asset->url,
+        placeholder,
+        "original": original_available,
+        "dimensions": original_dimensions,
+        "prints": prints_available,
+        "slug": slug.current,
+        tags,
+        description,
+        order
+      }
     }`
   )
 

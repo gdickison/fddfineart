@@ -20,11 +20,11 @@ export default function PaintingsInCollection ({paintings}) {
 
   return (
     <div>
-      <section className="flex flex-col md:flex-row flex-wrap max-w-[1170px] mx-auto">
+      <section className={`flex ${paintings.length > 2 ? "justify-center" : ""} flex-col md:flex-row flex-wrap max-w-[1170px] mx-auto`}>
         {paintings.map((painting, idx) => (
           <figure
             key={idx}
-            className="flex grow hover-effect"
+            className="flex hover-effect"
             onClick={!painting.placeholder ? e => openModal(e, idx, paintings) : e => e.preventDefault()}
           >
             <img
