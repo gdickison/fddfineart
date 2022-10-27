@@ -91,13 +91,16 @@ figure.hover-effect:hover > img {
 }
 
 #swiper-custom > .swiper-button-next,
-#swiper-gallery > .swiper-button-next {
+#swiper-gallery > .swiper-button-next,
+#swiper-product-details > .swiper-button-next {
   background-image: url(/next_chev.svg);
 }
 
 #swiper-custom > .swiper-button-prev,
-#swiper-gallery > .swiper-button-prev {
-  background-image: url(/previous_chev.svg)
+#swiper-gallery > .swiper-button-prev,
+#swiper-product-details > .swiper-button-prev {
+  background-image: url(/next_chev.svg);
+  transform: rotate(180deg);
 }
 
 #swiper-custom > .swiper-button-next,
@@ -112,16 +115,20 @@ figure.hover-effect:hover > img {
 }
 
 #swiper-gallery > .swiper-button-next,
-#swiper-gallery > .swiper-button-prev {
+#swiper-product-details > .swiper-button-next,
+#swiper-gallery > .swiper-button-prev,
+#swiper-product-details > .swiper-button-prev {
   position: absolute;
   z-index: 15;
-  background-size: 6rem;
+  width: 3rem;
   background-repeat: no-repeat;
   background-position: center;
 }
 
 #swiper-custom > .swiper-button-next::after,
 #swiper-custom > .swiper-button-prev::after,
+#swiper-product-details > .swiper-button-next::after,
+#swiper-product-details > .swiper-button-prev::after,
 #swiper-gallery > .swiper-button-next::after,
 #swiper-gallery > .swiper-button-prev::after {
   display: none

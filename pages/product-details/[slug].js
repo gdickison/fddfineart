@@ -2,7 +2,7 @@
 import { client } from "../../lib/client";
 import { useState } from "react";
 import { useStateContext } from "../../context/StateContext";
-import { Mousewheel, Navigation, Pagination, Thumbs } from "swiper";
+import { Mousewheel, Navigation, Thumbs } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import ProductDetailModal from "../../components/ProductDetailModal";
 import { urlFor } from "../../lib/client";
@@ -90,13 +90,11 @@ const ProductDetailsPage = ({productDetails, frameOptions, sizeOptions, mediaOpt
                       modules={[
                         Mousewheel,
                         Navigation,
-                        Pagination,
                         Thumbs
                       ]}
                       loop={true}
                       mousewheel={true}
                       navigation={true}
-                      pagination={{clickable: true}}
                       thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
                     >
                       {slides.map((slide, i) => {
