@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { useState } from "react"
 import ProductModal from "./ProductModal"
+import { urlFor } from "../lib/client"
 
 export default function PaintingsInCollection ({paintings}) {
   const [showModal, setShowModal] = useState(false)
@@ -27,7 +28,7 @@ export default function PaintingsInCollection ({paintings}) {
             onClick={!painting.placeholder ? e => openModal(e, idx, paintings) : e => e.preventDefault()}
           >
             <img
-              src={painting.imageUrl}
+              src={urlFor(painting.imageUrl).auto('format').url()}
               alt={painting.title}
               className="grow md:h-72 my-2 md:m-2 px-4 md:px-0 object-center object-cover hover:cursor-pointer"
             />
