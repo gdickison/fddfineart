@@ -3,6 +3,7 @@ import { client } from '../../lib/client'
 // import Swiper JS
 import { Autoplay, Lazy, Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react'
+import { urlFor } from '../../lib/client';
   
 const About = ({bio}) => {
   const slides = bio.bioImages.map((image, idx) => {
@@ -10,7 +11,7 @@ const About = ({bio}) => {
       <img
         key={idx}
         className="flex-shrink-0 object-cover aspect-square px-1 w-full swiper-lazy"
-        data-src={image}
+        data-src={urlFor(image).auto('format').url()}
         alt={`Slide ${idx + 1}`}
         data-slide={`Slide ${idx + 1}`}
       />

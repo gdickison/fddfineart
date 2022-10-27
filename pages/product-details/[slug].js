@@ -5,6 +5,7 @@ import { useStateContext } from "../../context/StateContext";
 import { Mousewheel, Navigation, Pagination, Thumbs } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import ProductDetailModal from "../../components/ProductDetailModal";
+import { urlFor } from "../../lib/client";
 
 const ProductDetailsPage = ({productDetails, frameOptions, sizeOptions, mediaOptions}) => {
   const { addToCart } = useStateContext()
@@ -72,7 +73,7 @@ const ProductDetailsPage = ({productDetails, frameOptions, sizeOptions, mediaOpt
 
   const slides = paintingImages.map((image, idx) => {
     return (
-      <img key={idx} src={image} alt={title} />
+      <img key={idx} src={urlFor(image).auto('format').url()} alt={title} />
     )
   })
 
