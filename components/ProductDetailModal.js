@@ -1,14 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 import { Mousewheel, Navigation } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { urlFor } from '../lib/client'
 
 const ProductDetailModal = ({idx, images, closeModal}) => {
   const slides = images.map((image) => {
     return (
       <>
         <img
-          src={urlFor(image.props.src).auto('format').url()}
+          src={image.props.src}
           alt={image.props.alt}
           className="w-full h-full object-contain"
         />
