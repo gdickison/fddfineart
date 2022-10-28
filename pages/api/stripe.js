@@ -21,7 +21,7 @@ export default async function handler(req, res) {
               product_data: {
                 name: item.original ? `${item.title} - Original` : `${item.title} - Print`,
                 description: item.original ? `${item.original_dimensions}` : `${item.selectedSize.size} - ${item.selectedMedia.media} - ${item.selectedFrame.frame}`,
-                images: item.image
+                images: item.image[0]
               }
             },
             quantity: 1
