@@ -9,7 +9,7 @@ const PurchaseSuccess = () => {
 
   useEffect(() => {
     const updatePainting = async () => {
-      const _id = query.id
+      const _id = query.original_id
 
       if(query.success && query.original === 'sold'){
         try {

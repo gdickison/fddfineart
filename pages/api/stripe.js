@@ -27,7 +27,7 @@ export default async function handler(req, res) {
             quantity: 1
           }
         }),
-        success_url: `${req.headers.origin}/purchase_success?success=true&original=${req.body.cartItems.find(o => o.original === true) ? 'sold' : 'available'}&session_id={CHECKOUT_SESSION_ID}`,
+        success_url: `${req.headers.origin}/purchase_success?success=true&original=${req.body.cartItems.find(o => o.original === true) ? `sold&original_id=${req.body.cartItems.find(o => o.original === true).id}` : 'available'}&session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${req.headers.origin}/purchase_success?canceled=true`
       }
       // Create Checkout Sessions from body params.
