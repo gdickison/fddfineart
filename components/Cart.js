@@ -7,7 +7,7 @@ const Cart = () => {
   const { setShowCart, cartItems, removeFromCart } = useStateContext()
 
   const priceArray = cartItems.map(item => {
-    return item.original ? item.original_price : item.selectedFrame.price + item.selectedSize.price + item.selectedMedia.price
+    return item.itemPrice
   })
 
   const cartTotalPrice = priceArray.reduce((a, b) => {
@@ -16,7 +16,6 @@ const Cart = () => {
 
   const handleCheckout = async () => {
     const stripe = await getStripe()
-
     const response = await fetch('/api/stripe', {
       method: 'POST',
       headers: {
@@ -30,9 +29,7 @@ const Cart = () => {
     }
 
     const data = await response.json()
-
     toast.loading('Redirecting...')
-
     stripe.redirectToCheckout({ sessionId: data.id })
   }
 
@@ -62,9 +59,9 @@ const Cart = () => {
                       </div>
                       <div className="flex flex-col text-sm sm:text-lg md:text-xl landscape:text-2xl items-start pl-3 md:p-8 lg:p-16">
                         <div className="font-medium text-left">
-                          <h3 className="">{item.title}</h3>
+                          <h3 className="">{item.title} {item.original ? ' - Original' : ' - Print'}</h3>
                         </div>
-                        <div className="font-light">
+                        <div className="font-light text-left">
                           {item.original &&
                             <>
                               <p>Original ({item.original_dimensions})</p>
@@ -72,15 +69,15 @@ const Cart = () => {
                           }
                           {!item.original &&
                             <>
-                              <p>{item.selectedFrame.style}</p>
-                              <p>{item.selectedSize.style}</p>
-                              <p>{item.selectedMedia.style}</p>
+                              <p>{item.selectedFrame.frame}</p>
+                              <p>{item.selectedSize.size}</p>
+                              <p>{item.selectedMedia.media}</p>
                             </>
                           }
                         </div>
                         <div>
                           <p className="font-light">
-                            Price: {new Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD', maximumFractionDigits: 0}).format(item.original ? item.original_price : item.selectedFrame.price + item.selectedSize.price + item.selectedMedia.price)}
+                            Price: {new Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD', maximumFractionDigits: 0}).format(item.itemPrice)}
                           </p>
                         </div>
                         <div className="mt-2 md:mt-8">

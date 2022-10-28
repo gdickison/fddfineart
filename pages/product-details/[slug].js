@@ -9,9 +9,9 @@ import { urlFor } from "../../lib/client";
 
 const ProductDetailsPage = ({productDetails, frameOptions, sizeOptions, mediaOptions}) => {
   const { addToCart } = useStateContext()
-  const [selectedFrame, setSelectedFrame] = useState({'id': frameOptions[0].id, 'style': frameOptions[0].style, 'price': frameOptions[0].price})
-  const [selectedSize, setSelectedSize] = useState({'id': sizeOptions[0].id, 'style': sizeOptions[0].size, 'price': sizeOptions[0].price})
-  const [selectedMedia, setSelectedMedia] = useState({'id': mediaOptions[0].id, 'style': mediaOptions[0].style, 'price': mediaOptions[0].price})
+  const [selectedFrame, setSelectedFrame] = useState({'id': frameOptions[0].id, 'frame': frameOptions[0].style, 'price': frameOptions[0].price})
+  const [selectedSize, setSelectedSize] = useState({'id': sizeOptions[0].id, 'size': sizeOptions[0].size, 'price': sizeOptions[0].price})
+  const [selectedMedia, setSelectedMedia] = useState({'id': mediaOptions[0].id, 'media': mediaOptions[0].style, 'price': mediaOptions[0].price})
   const [thumbsSwiper, setThumbsSwiper] = useState(null)
 
   const [showModal, setShowModal] = useState(false)
@@ -60,13 +60,15 @@ const ProductDetailsPage = ({productDetails, frameOptions, sizeOptions, mediaOpt
   const handleAddOriginalToCart = e => {
     e.preventDefault()
     const cartId = self.crypto.randomUUID()
-    addToCart({cartId, id, title, image, original, original_price, original_dimensions})
+    const itemPrice = original_price
+    addToCart({cartId, id, title, image, original, itemPrice, original_dimensions})
   }
 
   const handleAddPrintToCart = e => {
     e.preventDefault()
     const cartId = self.crypto.randomUUID()
-    addToCart({cartId, id, title, image, selectedFrame, selectedMedia, selectedSize})
+    const itemPrice = selectedFrame.price + selectedSize.price + selectedMedia.price
+    addToCart({cartId, id, title, image, selectedFrame, selectedMedia, selectedSize, itemPrice})
   }
 
   const paintingImages = wallImages !== null ? image.concat(wallImages) : image
