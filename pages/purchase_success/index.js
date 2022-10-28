@@ -11,7 +11,7 @@ const PurchaseSuccess = () => {
     const updatePainting = async () => {
       const _id = query.id
 
-      if(query.success && query.original){
+      if(query.success && query.original === 'sold'){
         try {
           await fetch('/api/originalSold', {
             method: 'PUT',
