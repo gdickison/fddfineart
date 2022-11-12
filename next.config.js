@@ -5,6 +5,14 @@ const nextConfig = {
     domains: [
       'cdn.sanity.io',
       'forrestdickison.com'
+    ],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'forrestdickison.com',
+        port: '',
+        pathname: '/**'
+      }
     ]
   }
 }
