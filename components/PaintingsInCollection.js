@@ -2,7 +2,6 @@
 import { useState } from "react"
 import ProductModal from "./ProductModal"
 import { urlFor } from "../lib/client"
-import Image from "next/future/image"
 
 export default function PaintingsInCollection ({paintings}) {
   const [showModal, setShowModal] = useState(false)
@@ -28,7 +27,7 @@ export default function PaintingsInCollection ({paintings}) {
             className="flex hover-effect"
             onClick={!painting.placeholder ? e => openModal(e, idx, paintings) : e => e.preventDefault()}
           >
-            <Image
+            <img
               src={urlFor(painting.imageUrl).auto('format').url()}
               width={370}
               height={300}
