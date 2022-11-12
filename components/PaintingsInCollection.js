@@ -2,6 +2,7 @@
 import { useState } from "react"
 import ProductModal from "./ProductModal"
 import { urlFor } from "../lib/client"
+import Image from "next/image"
 
 export default function PaintingsInCollection ({paintings}) {
   const [showModal, setShowModal] = useState(false)
@@ -20,14 +21,14 @@ export default function PaintingsInCollection ({paintings}) {
 
   return (
     <div>
-      <section className={`flex ${paintings.length > 2 ? "justify-center" : ""} flex-col sm:flex-row flex-wrap max-w-[1170px] mx-auto`}>
+      <section className={`flex ${paintings.length > 2 ? "justify-center" : ""} flex-col sm:flex-row flex-wrap max-w-[1170px] mx-auto gap-2`}>
         {paintings.map((painting, idx) => (
           <figure
             key={idx}
-            className="flex hover-effect"
+            className="flex justify-center hover-effect"
             onClick={!painting.placeholder ? e => openModal(e, idx, paintings) : e => e.preventDefault()}
           >
-            <img
+            <Image
               src={urlFor(painting.imageUrl).auto('format').url()}
               width={370}
               height={300}
