@@ -22,7 +22,7 @@ function MyApp({ Component, pageProps }) {
         <div className="flex-grow">
           <Toaster
             containerStyle={{
-              positon: 'absolute',
+              position: 'absolute',
               top: '25%',
               bottom: '25%',
             }}

@@ -29,7 +29,7 @@ export default function PaintingsInCollection ({paintings}) {
             onClick={!painting.placeholder ? e => openModal(e, idx, paintings) : e => e.preventDefault()}
           >
             <Image
-              src={urlFor(painting.imageUrl).auto('format').url()}
+              src={urlFor(painting.imageUrl).url()}
               width={370}
               height={300}
               alt={painting.title}
