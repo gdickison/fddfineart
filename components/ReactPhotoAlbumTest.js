@@ -2,7 +2,6 @@
 import { useState } from "react"
 import ProductModal from "./ProductModal"
 import { PhotoAlbum, PhotoProps } from 'react-photo-album'
-import Image from "next/future/image"
 
 export default function ReactPhotoAlbumTest ({paintings}) {
   const [showModal, setShowModal] = useState(false)

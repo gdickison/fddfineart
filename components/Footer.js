@@ -9,7 +9,7 @@ const Footer = () => {
         <ul className="py-6 text-center sm:flex sm:space-y-0 sm:justify-around sm:space-x-4 lg:flex-1 lg:justify-start gap-4">
           {navMenuItems && navMenuItems.map(item => {
             return (
-              <Link key={item.itemTitle} href={item.itemLink}>
+              <Link key={item.itemTitle} href={item.itemLink} legacyBehavior>
                 <li  className="h-full text-gray-600 hover:cursor-pointer">
                   <a className="uppercase relative block">
                     {item.itemTitle}

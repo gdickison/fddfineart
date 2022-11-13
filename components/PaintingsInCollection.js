@@ -21,7 +21,7 @@ export default function PaintingsInCollection ({paintings}) {
 
   return (
     <div>
-      <section className={`flex ${paintings.length > 2 ? "justify-center" : ""} flex-col sm:flex-row flex-wrap max-w-[1170px] mx-auto gap-2`}>
+      <section className={`flex ${paintings.length > 2 ? "justify-center" : ""} flex-col sm:flex-row flex-wrap max-w-[1170px] mx-auto`}>
         {paintings.map((painting, idx) => (
           <figure
             key={idx}
@@ -29,7 +29,7 @@ export default function PaintingsInCollection ({paintings}) {
             onClick={!painting.placeholder ? e => openModal(e, idx, paintings) : e => e.preventDefault()}
           >
             <Image
-              src={urlFor(painting.imageUrl).url()}
+              src={urlFor(painting.imageUrl).auto('format').url()}
               width={370}
               height={300}
               alt={painting.title}

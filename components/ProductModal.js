@@ -3,14 +3,14 @@ import Link from "next/link"
 import { Mousewheel, Navigation } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { urlFor } from "../lib/client"
-import Image from "next/future/image"
+import Image from "next/image"
 
 const ProductModal = ({idx, paintings, closeModal}) => {
   const slides = paintings.map((painting) => {
     return (
       <>
         <Image
-          src={urlFor(painting.imageUrl).url()}
+          src={urlFor(painting.imageUrl).auto('format').url()}
           width={1000}
           height={1000}
           alt={painting.title}

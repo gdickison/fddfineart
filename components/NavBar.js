@@ -25,7 +25,7 @@ const NavBar = () => {
           <div className="hidden md:flex font-libre tracking-wider justify-between md:flex-1">
             {navMenuItems.map(item => {
               return (
-                <Link key={item.itemTitle} href={item.itemLink}>
+                <Link key={item.itemTitle} href={item.itemLink} legacyBehavior>
                   <a className={`py-2 px-4 whitespace-nowrap text-sm lg:text-navland font-medium ${router.pathname === item.itemLink ? 'border-b border-gray-200' : ''}`}>
                     {item.itemTitle}
                   </a>
@@ -72,7 +72,7 @@ const NavBar = () => {
               <div className="grid grid-cols-1 gap-y-2 font-libre tracking-wider">
               {navMenuItems.map(item => {
                 return (
-                  <Link key={item.itemTitle} href={item.itemLink}>
+                  <Link key={item.itemTitle} href={item.itemLink} legacyBehavior>
                     <a className={`${router.pathname === item.itemLink ? 'bg-gray-200' : ''}`}>
                       {item.itemTitle}
                     </a>

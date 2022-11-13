@@ -60,7 +60,7 @@ const Galleries = () => {
         </Swiper>
       </div>
       <div className="flex flex-col items-center md:gap-4">
-        <Link href="https://www.montanagallery.net/forrest-dickison">
+        <Link href="https://www.montanagallery.net/forrest-dickison" legacyBehavior>
           <a target="_blank">
             <h2 className="text-3xl font-libre uppercase">Montana Gallery</h2>
           </a>
