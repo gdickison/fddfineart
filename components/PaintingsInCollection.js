@@ -21,21 +21,21 @@ export default function PaintingsInCollection ({paintings}) {
 
   return (
     <div>
-      <section className={`flex ${paintings.length > 2 ? "justify-center" : ""} flex-col sm:flex-row flex-wrap max-w-[1170px] mx-auto`}>
+      <section className={`flex ${paintings.length > 2 ? "justify-center" : ""} flex-col sm:flex-row flex-wrap max-w-[1170px] mx-auto gap-2`}>
         {paintings.map((painting, idx) => (
           <figure
             key={idx}
-            className="flex justify-center hover-effect"
+            className="flex justify-center hover-effect hover:cursor-pointer"
             onClick={!painting.placeholder ? e => openModal(e, idx, paintings) : e => e.preventDefault()}
           >
-          {/* {console.log(painting.imageUrl)} */}
+          {console.log(painting.imageUrl)}
             <Image
               src={painting.imageUrl}
               // src={urlFor(painting.imageUrl).auto('format').url()}
               width={370}
               height={300}
               alt={painting.title}
-              className="grow md:h-72 my-2 md:m-2 px-4 md:px-0 object-center object-cover hover:cursor-pointer"
+              // className="grow md:h-72 my-2 md:m-2 px-4 md:px-0 object-center object-cover hover:cursor-pointer"
             />
             <figcaption>
               <div className="caption-container hover:cursor-pointer font-libre">
