@@ -28,8 +28,10 @@ export default function PaintingsInCollection ({paintings}) {
             className="flex justify-center hover-effect"
             onClick={!painting.placeholder ? e => openModal(e, idx, paintings) : e => e.preventDefault()}
           >
+          {/* {console.log(painting.imageUrl)} */}
             <Image
-              src={urlFor(painting.imageUrl).auto('format').url()}
+              src={painting.imageUrl}
+              // src={urlFor(painting.imageUrl).auto('format').url()}
               width={370}
               height={300}
               alt={painting.title}
