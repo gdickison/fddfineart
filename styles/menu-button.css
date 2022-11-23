@@ -1,0 +1,80 @@
+button {
+  background: transparent;
+  border-radius: 0.25rem;
+}
+
+.hamburger {
+  width: 1.5rem;
+  height: 1.5rem;
+  position: relative;
+}
+
+.line {
+  position: absolute;
+  width: 80%;
+  height: 10%;
+  left: 10%;
+  border-radius: 5px;
+  transition-duration: 0.5s;
+}
+
+.top {
+  top: 20%;
+}
+
+.middle {
+  top: 45%;
+}
+
+.bottom {
+  top: 70%;
+}
+
+.button-one {
+  --button-color: #333;
+}
+
+.button-one .line {
+  background-color: #000;
+}
+
+/* BUTTON ONE ANIMATION */
+
+.button-one .top {
+  transition-property: rotate, top;
+  transition-delay: 0s, 0.25s;
+  transition-duration: 0.5s;
+}
+
+.button-one .middle {
+  transition-delay: 0.25s;
+  transition-duration: 0.5s;
+}
+
+.button-one .bottom {
+  transition-property: rotate, top;
+  transition-delay: 0s, 0.25s;
+  transition-duration: 0.5s;
+}
+
+.button-one[aria-expanded="true"] .top {
+  transition-property: top, rotate;
+  transition-delay: 0s, 0.25s;
+  transition-duration: 0.5s;
+  rotate: 45deg;
+  top: 45%;
+}
+
+.button-one[aria-expanded="true"] .bottom {
+  transition-property: top, rotate;
+  transition-delay: 0s, 0.25s;
+  transition-duration: 0.5s;
+  rotate: -45deg;
+  top: 45%;
+}
+
+.button-one[aria-expanded="true"] .middle {
+  transition-property: opacity;
+  transition-duration: 0.25s;
+  opacity: 0;
+}

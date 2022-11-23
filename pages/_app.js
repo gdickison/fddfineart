@@ -1,4 +1,5 @@
 import '../styles/globals.css'
+import '../styles/menu-button.css'
 import 'swiper/css'
 import 'swiper/css/autoplay'
 import 'swiper/css/lazy'

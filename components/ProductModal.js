@@ -27,7 +27,7 @@ const ProductModal = ({idx, paintings, closeModal}) => {
             </Link>
           }
           {!painting.original && !painting.prints  &&
-              <span className="underline font-libre hover:text-gray-400 hover:cursor-pointer" onClick={closeModal}>Back to Show</span>
+              <span className="underline font-libre hover:text-gray-400 hover:cursor-pointer" onClick={closeModal}>Back to Collection</span>
           }
         </p>
       </>
