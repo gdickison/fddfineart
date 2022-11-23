@@ -6,12 +6,6 @@ import ProductModal from '../../components/ProductModal'
 
 export default function Illustrations({ illustrations }) {
 
-  if(illustrations.length < 1){
-    return (
-      <ComingSoon/>
-    )
-  }
-
   const [showModal, setShowModal] = useState(false)
   const [modalContents, setModalContents] = useState()
 
@@ -24,6 +18,12 @@ export default function Illustrations({ illustrations }) {
   const closeModal = e => {
     e.preventDefault()
     setShowModal(false)
+  }
+
+  if(illustrations.length < 1){
+    return (
+      <ComingSoon/>
+    )
   }
 
   return (
