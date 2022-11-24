@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { useState } from "react"
 import ProductModal from "./ProductModal"
-import { urlFor } from "../lib/client"
+// import { urlFor } from "../lib/client"
 import Image from "next/image"
 
 export default function PaintingsInCollection ({paintings}) {
@@ -29,7 +29,7 @@ export default function PaintingsInCollection ({paintings}) {
             onClick={!painting.placeholder ? e => openModal(e, idx, paintings) : e => e.preventDefault()}
           >
             <Image
-              src={urlFor(painting.imageUrl).auto('format').url()}
+              src={painting.imageUrl}
               width={370}
               height={300}
               alt={painting.title}
