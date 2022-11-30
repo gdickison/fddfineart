@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['cdn.sanity.io']
+    domains: ['forrestdickison.com', 'cdn.sanity.io']
   }
   // images: {
   //   remotePatterns: [
