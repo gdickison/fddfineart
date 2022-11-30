@@ -22,7 +22,6 @@
     "react-hot-toast": "^2.3.0",
     "react-icons": "^4.4.0",
     "react-photo-album": "^1.16.1",
-    "sharp": "^0.31.2",
     "stripe": "^8.222.0",
     "swiper": "^8.4.4"
   },
