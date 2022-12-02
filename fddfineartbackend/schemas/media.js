@@ -43,7 +43,7 @@ export default {
     prepare(selection){
       const {style, price, height, width} = selection
       return {
-        title: `${style} - ${width} X ${height}`,
+        title: `${style} - ${height} X ${width}`,
         subtitle: `$${price}`
       }
     }

@@ -10,7 +10,8 @@ const ProductModal = ({idx, paintings, closeModal}) => {
     return (
       <>
         <Image
-          src={urlFor(painting.imageUrl).auto('format').url()}
+          src={painting.imageUrl}
+          // src={urlFor(painting.imageUrl).auto('format').url()}
           width={1000}
           height={1000}
           alt={painting.title}

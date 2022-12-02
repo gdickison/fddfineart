@@ -89,34 +89,36 @@ export default function PrintDetails ({printOptions}) {
     <div>
       <h2 className="text-black text-2xl title-font font-thin mb-4">Purchase a Print</h2>
       <div className="flex justify-between border-t border-gray-200 py-2">
-        <label className="font-thin text-xl mx-2 text-black"  htmlFor="options">Select a Size</label>
+        <label className="font-thin text-xl mx-2 text-black"  htmlFor="options">Select Size</label>
         <select className="w-1/2 mx-2 text-center border-2 hover:border-gray-800 bg-white text-black font-thin text-xl" id="size" name="size" defaultValue="" onChange={handleSizeChange}>
           {printOptions && printOptions.sizeOptions.map(option => {
             return (
-              <option key={option.key} value={option.key}>{option.sizeLabel} ({option.width}X{option.height})</option>
+              <option key={option.key} value={option.key}>{`${option.height}" x ${option.width}"`}</option>
             )
           })}
         </select>
       </div>
-      <div className="flex justify-between border-t border-gray-200 py-2">
-        <label className="font-thin text-xl mx-2 text-black"  htmlFor="options">Select a Media</label>
-        <select className="w-1/2 mx-2 text-center border-2 hover:border-gray-800 bg-white text-black font-thin text-xl" id="media" name="media" defaultValue="" onChange={handleMediaChange}>
-          {printOptions && printOptions.mediaOptions.map(option => {
-            return (
-              <option key={option.style} value={option.style}>{option.style}</option>
-            )
-          })}
-        </select>
-      </div>
-      <div className="flex justify-between border-t border-gray-200 py-2">
-        <label className="font-thin text-xl mx-2 text-black"  htmlFor="options">Select a Frame</label>
-        <select className="w-1/2 mx-2 text-center border-2 hover:border-gray-800 bg-white text-black font-thin text-xl" id="frame" name="frame" defaultValue="" onChange={handleFrameChange}>
-          {printOptions && printOptions.frameOptions.map(option => {
+      <div className="hidden"> {/* Remove this div when media and frame options are added to Sanity */}
+        <div className="flex justify-between border-t border-gray-200 py-2">
+          <label className="font-thin text-xl mx-2 text-black"  htmlFor="options">Select Media</label>
+          <select className="w-1/2 mx-2 text-center border-2 hover:border-gray-800 bg-white text-black font-thin text-xl" id="media" name="media" defaultValue="" onChange={handleMediaChange}>
+            {printOptions && printOptions.mediaOptions.map(option => {
               return (
-                <option key={option.key} value={option.key}>{option.style} {option.style !== "No Frame" ? `(${option.width}X${option.height})` : ''}</option>
+                <option key={option.style} value={option.style}>{option.style}</option>
               )
-          })}
-        </select>
+            })}
+          </select>
+        </div>
+        <div className="flex justify-between border-t border-gray-200 py-2">
+          <label className="font-thin text-xl mx-2 text-black"  htmlFor="options">Select Frame</label>
+          <select className="w-1/2 mx-2 text-center border-2 hover:border-gray-800 bg-white text-black font-thin text-xl" id="frame" name="frame" defaultValue="" onChange={handleFrameChange}>
+            {printOptions && printOptions.frameOptions.map(option => {
+                return (
+                  <option key={option.key} value={option.key}>{option.style} {option.style !== "No Frame" ? `(${option.height}" x ${option.width}")` : ''}</option>
+                )
+            })}
+          </select>
+        </div>
       </div>
       <div className="flex justify-between border-t border-gray-200 py-2 items-center">
         <span className="title-font text-xl mx-2 text-black" >{new Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD', maximumFractionDigits: 0}).format(selectedFrame.price + selectedSize.price + selectedMedia.price)}</span>

@@ -48,7 +48,7 @@ export default {
       const {style, price, height, width, media} = selection
       return {
         media: media,
-        title: `${style} - ${width} X ${height}`,
+        title: `${style} - ${height} X ${width}`,
         subtitle: `$${price}`
       }
     }

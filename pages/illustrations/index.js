@@ -38,7 +38,8 @@ export default function Illustrations({ illustrations }) {
             onClick={!illustration.placeholder ? e => openModal(e, idx, illustrations) : e => e.preventDefault()}
           >
             <Image
-              src={urlFor(illustration.imageUrl).auto('format').url()}
+              src={illustration.imageUrl}
+              // src={urlFor(illustration.imageUrl).auto('format').url()}
               width={370}
               height={300}
               alt={illustration.title}

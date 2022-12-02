@@ -72,7 +72,7 @@ export default {
               const {size, price, height, width} = selection
               const sizeTitle = size && SIZES.flatMap(option => option.value === size ? [option.title] : [])
               return {
-                title: `${sizeTitle} - ${width} X ${height}`,
+                title: `${sizeTitle} - ${height} X ${width}`,
                 subtitle: `$${price}`
               }
             }
@@ -110,7 +110,7 @@ export default {
               const {media, style, height, width, price} = selection
               return {
                 media: media,
-                title: `${style} - ${width} X ${height}`,
+                title: `${style} - ${height} X ${width}`,
                 subtitle: `$${price}`
               }
             }
