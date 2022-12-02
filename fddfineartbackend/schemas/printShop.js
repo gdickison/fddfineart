@@ -84,6 +84,7 @@ export default {
     {
       name: 'frame_options',
       title: 'Frame Options',
+      description: 'Add "No Frame" as the first frame option',
       type: 'array',
       of: [
         {
