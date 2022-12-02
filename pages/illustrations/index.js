@@ -3,6 +3,8 @@ import { client, urlFor } from '../../lib/client'
 import { useState } from 'react'
 import ComingSoon from '../../components/ComingSoon'
 import ProductModal from '../../components/ProductModal'
+import Image from 'next/image'
+import { shimmer, toBase64 } from '../../lib/utils'
 
 export default function Illustrations({ illustrations }) {
 
@@ -35,12 +37,13 @@ export default function Illustrations({ illustrations }) {
             className="flex justify-center hover-effect hover:cursor-pointer"
             onClick={!illustration.placeholder ? e => openModal(e, idx, illustrations) : e => e.preventDefault()}
           >
-            <img
+            <Image
               src={urlFor(illustration.imageUrl).auto('format').url()}
               width={370}
               height={300}
               alt={illustration.title}
-              // className="grow md:h-72 my-2 md:m-2 px-4 md:px-0 object-center object-cover hover:cursor-pointer"
+              placeholder="blur"
+              blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(370, 300))}`}
             />
             <figcaption>
               <div className="caption-container hover:cursor-pointer font-libre">

@@ -2,6 +2,7 @@
 import toast from "react-hot-toast"
 import { useStateContext } from "../context/StateContext"
 import getStripe from "../lib/getStripe"
+import Image from "next/image"
 
 const Cart = () => {
   const { setShowCart, cartItems, removeFromCart } = useStateContext()
@@ -53,11 +54,17 @@ const Cart = () => {
               <div className="flex flex-col divide-y divide-gray-300">
                 {cartItems.map(item => {
                   return (
-                    <div key={item.cartId} className="flex items-center">
+                    <div key={item.cartId} className="flex items-center flex-col sm:flex-row">
                       <div className="py-4">
-                        <img className="w-36 md:w-80" src={item.image} alt={item.title} />
+                        <Image
+                          src={item.image[0]}
+                          alt={item.title}
+                          width={370}
+                          height={300}
+                          // className="w-36 md:w-80"
+                        />
                       </div>
-                      <div className="flex flex-col text-sm sm:text-lg md:text-xl landscape:text-2xl items-start pl-3 md:p-8 lg:p-16">
+                      <div className="flex flex-col text-lg landscape:text-2xl items-start pl-3 md:p-8 lg:p-16">
                         <div className="font-medium text-left">
                           <h3 className="">{item.title} {item.original ? ' - Original' : ' - Print'}</h3>
                         </div>
@@ -99,9 +106,6 @@ const Cart = () => {
                 <p className="text-xs md:text-sm landscape:text-base text-gray-900">Price includes US taxes and US shipping</p>
               </div>
               <div className="flex justify-end space-x-4">
-                {/* <button type="button" className="px-6 py-2 bg-gray-100 text-gray-800 border-2 hover:border-black" onClick={e => setShowCart(false)}>
-                  Continue Shopping
-                </button> */}
                 <button type="button" className="px-6 py-2 bg-gray-100 text-gray-800 border-2 hover:border-black hover:bg-black hover:text-gray-100 uppercase tracking-widest font-semibold" onClick={handleCheckout}>
                   Checkout
                 </button>

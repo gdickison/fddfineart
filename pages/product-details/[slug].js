@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { client } from "../../lib/client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useStateContext } from "../../context/StateContext";
 import { Mousewheel, Navigation, Thumbs } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -8,7 +8,25 @@ import ProductDetailModal from "../../components/ProductDetailModal";
 import { urlFor } from "../../lib/client";
 import PrintDetails from "../../components/PrintDetails";
 
+function getWindowSize() {
+  const {innerWidth, innerHeight} = window;
+  return {innerWidth, innerHeight};
+}
+
 const ProductDetailsPage = ({productDetails, printOptions}) => {
+  const [windowSize, setWindowSize] = useState(getWindowSize());
+
+  useEffect(() => {
+    function handleWindowResize() {
+      setWindowSize(getWindowSize());
+    }
+
+    window.addEventListener('resize', handleWindowResize);
+
+    return () => {
+      window.removeEventListener('resize', handleWindowResize);
+    };
+  }, []);
 
   const { addToCart } = useStateContext()
 
@@ -50,7 +68,7 @@ const ProductDetailsPage = ({productDetails, printOptions}) => {
         <div className="container mx-auto max-w-[1400px]">
           <div className="mx-auto flex flex-col md:flex-row justify-center gap-8 md:gap-16">
             <div className="md:w-1/2 m-auto flex flex-row-reverse">
-              {slides && slides.length > 1
+              {slides && slides.length > 1 && windowSize.innerWidth > 768
                 ?
                   <>
                     <Swiper
@@ -154,7 +172,7 @@ export const getServerSideProps = async (context) => {
   }`)
   .then(data => data[0])
 
-  const printOptions = await client.fetch(`*[_type == "printShop" && print->slug.current == "${context.params.slug}"]{
+  const printOptions = await client.fetch(`*[_type == "printShop" && print->prints_available && print->slug.current == "${context.params.slug}"]{
     "id": print->_id,
     "title": print->title,
     "prints": print->prints_available,
