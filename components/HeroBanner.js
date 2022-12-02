@@ -7,7 +7,8 @@ const HeroBanner = () => {
     <div className="text-center py-6">
       <div className="md:overflow-hidden py-0">
         <div className="hover:cursor-pointer flex justify-center">
-          <Link href="/">
+          {/* <Link href="/"> */}
+          <Link href="/originals_for_sale">
             {/* <a className="text-4xl font-libre uppercase text-black" style={{'letter-spacing': '0.2em'}}>Forrest Dickison Fine Art</a> */}
             <img src="/ForrestDickisonWordmark.jpg" alt="Forrest Dickison Fine Art" className="w-[50rem]" />
           </Link>
