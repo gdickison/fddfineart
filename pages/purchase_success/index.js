@@ -47,7 +47,7 @@ const PurchaseSuccess = () => {
         </div>
         <div className="flex justify-center lg:w-2/3 w-full sm:flex-row flex-col mx-auto px-8 sm:space-x-4 sm:space-y-0 space-y-4 sm:px-0 items-end">
         <Link href="/">
-          <button type="button" className="w-full md:w-1/2 py-2 font-semibold bg-gray-100 text-gray-800 border-2 hover:border-black">Continue Shopping</button>
+          <button type="button" className="w-full p-2 font-semibold bg-gray-100 text-gray-800 border-2 hover:border-black">Continue Shopping</button>
         </Link>
         </div>
       </div>

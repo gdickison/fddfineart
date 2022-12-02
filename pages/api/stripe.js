@@ -20,7 +20,7 @@ export default async function handler(req, res) {
               tax_behavior: 'inclusive',
               product_data: {
                 name: item.original ? `${item.title} - Original` : `${item.title} - Print`,
-                description: item.original ? `${item.original_dimensions}` : `${item.selectedSize.size} - ${item.selectedMedia.media} - ${item.selectedFrame.frame}`,
+                description: item.original ? `${item.original_dimensions}` : `${item.printSize} - ${item.printWidth} X ${item.printHeight} - ${item.printMedia}`,
                 images: item.image
               }
             },

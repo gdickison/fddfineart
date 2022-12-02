@@ -2,9 +2,9 @@ import { client } from '../../lib/client'
 import ComingSoon from '../../components/ComingSoon'
 import PaintingsInCollection from '../../components/PaintingsInCollection'
 
-export default function PrintShop({printPaintings}) {
+export default function PrintShop({prints4sale}) {
 
-  if(printPaintings.length < 1){
+  if(prints4sale.length < 1){
     return (
       <ComingSoon/>
     )
@@ -12,28 +12,25 @@ export default function PrintShop({printPaintings}) {
 
   return (
     <PaintingsInCollection
-      paintings={printPaintings}
+      paintings={prints4sale}
     />
   )
 }
 
 export const getServerSideProps = async () => {
-
-  const printPaintings = await client.fetch(
-    `*[_type == "paintings" && prints_available == true && !(_id match "draft*")]{
-      "id": _id,
-      "imageUrl": image.asset->url,
-      title,
-      "slug": slug.current,
-      "original": original_available,
-      "prints": prints_available,
-      tags,
-      description,
-      order
+  const prints4sale = await client.fetch(
+    `*[_type == "printShop" && print->prints_available]{
+      'description': print->description,
+      'id': print->_id,
+      'title': print->title,
+      'imageUrl': print->image.asset->url,
+      "original": print->original_available,
+      "prints": print->prints_available,
+      "slug": print->slug.current
     }`
   )
 
   return {
-    props: {printPaintings}
+    props: {prints4sale}
   }
 }

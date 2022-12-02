@@ -69,9 +69,9 @@ const Cart = () => {
                           }
                           {!item.original &&
                             <>
-                              <p>{item.selectedFrame.frame}</p>
-                              <p>{item.selectedSize.size}</p>
-                              <p>{item.selectedMedia.media}</p>
+                              <p>Size: {item.printSize} - {item.printWidth} X {item.printHeight}</p>
+                              <p>Frame: {item.frameStyle} {item.frameStyle !== "No Frame" ? ` - (${item.frameWidth} X ${item.frameHeight})` : ''}</p>
+                              <p>Media: {item.printMedia}</p>
                             </>
                           }
                         </div>

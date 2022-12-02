@@ -11,6 +11,7 @@ import media from './media'
 import paintings from './paintings'
 import shows from './shows'
 import size from './size'
+import printShop from './printShop'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -24,9 +25,10 @@ export default createSchema({
     blockContent,
     collections,
     frame,
-    media,
+    // media,
     paintings,
     shows,
-    size
+    // size,
+    printShop
   ]),
 })
