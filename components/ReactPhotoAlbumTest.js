@@ -1,16 +1,18 @@
 /* eslint-disable @next/next/no-img-element */
 import { useState } from "react"
 import ProductModal from "./ProductModal"
-import { PhotoAlbum, PhotoProps } from 'react-photo-album'
+import PhotoAlbum from 'react-photo-album'
+import Image from "next/image"
+import { shimmer, toBase64 } from "../lib/utils"
 
 export default function ReactPhotoAlbumTest ({paintings}) {
   const [showModal, setShowModal] = useState(false)
   const [modalContents, setModalContents] = useState()
 
-  const openModal = (e, original, prints, id, title, image, dimensions, slug) => {
+  const openModal = (e, photo, idx) => {
     e.preventDefault()
     setShowModal(true)
-    setModalContents({ original, prints, id, title, image, dimensions, slug})
+    setModalContents({ idx, paintings})
   }
 
   const closeModal = e => {
@@ -19,129 +21,91 @@ export default function ReactPhotoAlbumTest ({paintings}) {
   }
 
   paintings.forEach(painting => {
-    painting.width = painting.imageUrl.split('-')[1].split('.')[0].split('x')[0]
-    painting.height = painting.imageUrl.split('-')[1].split('.')[0].split('x')[1]
-    painting.src = painting.imageUrl
+    painting.width = Number(painting.imageUrl.split('-')[1].split('.')[0].split('x')[0])
+    painting.height = Number(painting.imageUrl.split('-')[1].split('.')[0].split('x')[1])
   })
 
-  const renderPhoto = ({photo}) => {
-    return (
+  const breakpoints = [1080, 640, 384, 256, 128, 96, 64, 48];
+
+  const photos = paintings.map((painting) => ({
+    src: painting.imageUrl,
+    alt: painting.title,
+    title: `${painting.title} | ${painting.dimensions} | ${painting.original} | ${painting.prints_available}`,
+    width: painting.width,
+    height: painting.height,
+    images: breakpoints.map((breakpoint) => {
+      const height = Math.round((painting.height / painting.width) * breakpoint);
+      return {
+        src: painting.imageUrl,
+        alt: painting.title,
+        title: `${painting.title} | ${painting.dimensions} | ${painting.original} | ${painting.prints_available}`,
+        width: breakpoint,
+        height
+      };
+    }),
+  }));
+
+  const NextJsImage = ({
+    imageProps: { src, alt, title, sizes, className, onClick },
+    wrapperStyle,
+  }) => (
+    <div style={wrapperStyle}>
       <figure
-        key={photo.id}
-        className="flex grow hover-effect relative"
-        onClick={!photo.placeholder ? e => openModal(e, photo.original, photo.prints, photo.id, photo.title, photo.image, photo.dimensions, photo.slug) : e => e.preventDefault()}
-      >
-        <img
-          src={photo.src}
-          width={100}
-          // height={200}
-          alt={photo.title}
-          className="grow p-2 object-contain hover:cursor-pointer"
-        />
+          className="flex justify-center hover-effect hover:cursor-pointer relative"
+          style={{width: "100%", height: "100%"}}
+        >
+          <div style={{ display: "block", position: "relative", width: "100%", height: "100%" }}>
+            <Image
+              fill
+              src={src}
+              alt={alt}
+              title={title}
+              sizes={sizes}
+              className="painting-image"
+              onClick={onClick}
+              placeholder="blur"
+              blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(370, 300))}`}
+            />
+          </div>
         <figcaption>
           <div className="caption-container hover:cursor-pointer font-libre">
             <h4 className="text-xl">
-              {photo.title}
+              {title.split('|')[0].trim()}
             </h4>
             <div className="text-sm">
-
             <p>
-              {photo.dimensions}
+              {title.split('|')[1].trim()}
             </p>
-            {!photo.placeholder &&
-              <>
-                <p>
-                  Original {photo.original ? 'Available' : 'Sold'}
-                </p>
-                <p>
-                  {photo.prints ? 'Prints Available' : ''}
-                </p>
-              </>
-            }
+            <p>
+              Original {title.split('|')[2].trim() === "true" ? 'Available' : 'Sold'}
+            </p>
+            <p>
+              {title.split('|')[3].trim() === "true" ? 'Prints Available' : ''}
+            </p>
             </div>
           </div>
         </figcaption>
       </figure>
-    )
-  }
-
-  const photos = paintings.map((painting, idx) => {
-    return {
-      src: painting.src,
-      width: Number(painting.width),
-      height: Number(painting.height),
-      placeholder: painting.placeholder,
-      original: (painting.original).toString(),
-      prints: painting.prints,
-      id: painting.id,
-      title: painting.title,
-      image: painting.imageUrl,
-      dimensions: painting.dimensions,
-      slug: painting.slug,
-      sizes: painting.sizes
-    }
-  })
+    </div>
+  );
 
   return (
     <div>
-    {console.log('photos', photos)}
       <PhotoAlbum
         photos={photos}
         layout={"rows"}
         targetRowHeight={360}
-        renderPhoto={renderPhoto}
+        rowConstraints={
+          {maxPhotos: 5}
+        }
+        renderPhoto={NextJsImage}
+        onClick={(e, photo, idx) => {openModal(e, photo, idx)}}
       />
-      {/* <section className="flex flex-wrap max-w-[1170px] mx-auto">
-        {paintings.map((painting, idx) => (
-          <>
-          {console.log('painting', painting)}
-            <figure
-              key={idx}
-              className="flex grow hover-effect"
-              onClick={!painting.placeholder ? e => openModal(e, painting.original, painting.prints, painting.id, painting.title, painting.imageUrl, painting.dimensions, painting.slug) : e => e.preventDefault()}
-            >
-              <img
-                src={painting.imageUrl}
-                alt={painting.title}
-                className="grow h-72 m-2 object-center object-cover hover:cursor-pointer"
-              />
-              <figcaption>
-                <div className="caption-container hover:cursor-pointer font-libre">
-                  <h4 className="text-xl">
-                    {painting.title}
-                  </h4>
-                  <div className="text-sm">
-
-                  <p>
-                    {painting.dimensions}
-                  </p>
-                  {!painting.placeholder &&
-                    <>
-                      <p>
-                        Original {painting.original ? 'Available' : 'Sold'}
-                      </p>
-                      <p>
-                        {painting.prints ? 'Prints Available' : ''}
-                      </p>
-                    </>
-                  }
-                  </div>
-                </div>
-              </figcaption>
-            </figure>
-          </>
-        ))}
-      </section> */}
       {showModal &&
         <ProductModal
-          original={modalContents.original}
-          prints={modalContents.prints}
-          id={modalContents.id}
-          title={modalContents.title}
-          image={modalContents.image}
-          dimensions={modalContents.dimensions}
-          slug={modalContents.slug}
           closeModal={closeModal}
+          idx={modalContents.idx}
+          paintings={modalContents.paintings}
         />
       }
     </div>

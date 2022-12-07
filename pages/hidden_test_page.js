@@ -2,7 +2,6 @@ import { client } from '../lib/client'
 import ReactPhotoAlbumTest from '../components/ReactPhotoAlbumTest'
 
 export default function PhotoAlbumTest({originalPaintings}) {
-  console.log('originalPaintings', originalPaintings)
   return (
     <ReactPhotoAlbumTest
       paintings={originalPaintings}
