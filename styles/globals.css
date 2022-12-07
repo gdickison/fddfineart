@@ -87,7 +87,8 @@ figure.hover-effect:hover > img {
 }
 
 .react-photo-album--row {
-  margin-bottom: 0 !important;
+  justify-content: space-around !important;
+  margin-bottom: 0.5rem !important;
 }
 
 #swiper-custom > .swiper-button-next,

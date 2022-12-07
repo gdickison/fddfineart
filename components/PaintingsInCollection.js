@@ -1,14 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
 import { useState } from "react"
 import ProductModal from "./ProductModal"
+import PhotoAlbum from 'react-photo-album'
 import Image from "next/image"
 import { shimmer, toBase64 } from "../lib/utils"
 
-export default function PaintingsInCollection ({paintings}) {
+export default function ReactPhotoAlbumTest ({paintings}) {
   const [showModal, setShowModal] = useState(false)
   const [modalContents, setModalContents] = useState()
 
-  const openModal = (e, idx, paintings) => {
+  const openModal = (e, photo, idx) => {
     e.preventDefault()
     setShowModal(true)
     setModalContents({ idx, paintings})
@@ -19,49 +20,87 @@ export default function PaintingsInCollection ({paintings}) {
     setShowModal(false)
   }
 
-  return (
-    <div>
-      <section className={`flex ${paintings.length > 2 ? "justify-center" : ""} flex-col sm:flex-row flex-wrap max-w-[1170px] mx-auto gap-2`}>
-        {paintings.map((painting, idx) => (
-          <figure
-            key={idx}
-            className="flex justify-center hover-effect hover:cursor-pointer"
-            onClick={!painting.placeholder ? e => openModal(e, idx, paintings) : e => e.preventDefault()}
-          >
+  paintings.forEach(painting => {
+    painting.width = Number(painting.imageUrl.split('-')[1].split('.')[0].split('x')[0])
+    painting.height = Number(painting.imageUrl.split('-')[1].split('.')[0].split('x')[1])
+  })
+
+  const breakpoints = [1080, 640, 384, 256, 128, 96, 64, 48];
+  const photos = paintings.map((painting) => ({
+    src: painting.imageUrl,
+    alt: painting.title,
+    title: `${painting.title} | ${painting.dimensions} | ${painting.original} | ${painting.prints}`,
+    width: painting.width,
+    height: painting.height,
+    images: breakpoints.map((breakpoint) => {
+      const height = Math.round((painting.height / painting.width) * breakpoint);
+      return {
+        src: painting.imageUrl,
+        alt: painting.title,
+        title: `${painting.title} | ${painting.dimensions} | ${painting.original} | ${painting.prints}`,
+        width: breakpoint,
+        height
+      };
+    }),
+  }));
+
+  const NextJsImage = ({
+    imageProps: { src, alt, title, sizes, className, onClick },
+    wrapperStyle,
+  }) => (
+    <div style={wrapperStyle}>
+      <figure
+          className="flex justify-center hover-effect hover:cursor-pointer relative"
+          style={{width: "100%", height: "100%"}}
+        >
+          <div style={{ display: "block", position: "relative", width: "100%", height: "100%" }}>
             <Image
-              src={painting.imageUrl}
-              width={370}
-              height={300}
-              alt={painting.title}
+              fill
+              src={src}
+              alt={alt}
+              title={title}
+              sizes={sizes}
+              onClick={onClick}
               placeholder="blur"
               blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(370, 300))}`}
             />
-            <figcaption>
-              <div className="caption-container hover:cursor-pointer font-libre">
-                <h4 className="text-xl">
-                  {painting.title}
-                </h4>
-                <div className="text-sm">
+          </div>
+        <figcaption>
+          <div className="caption-container hover:cursor-pointer font-libre">
+            <h4 className="text-xl">
+              {title.split('|')[0].trim()}
+            </h4>
+            <div className="text-sm">
+            {title.split('|')[1].trim() !== "undefined" &&
+              <p>
+                {title.split('|')[1].trim()}
+              </p>
+            }
+            <p>
+              Original {title.split('|')[2].trim() === "true" ? 'Available' : 'Sold'}
+            </p>
+            <p>
+              {title.split('|')[3].trim() === "true" ? 'Prints Available' : ''}
+            </p>
+            </div>
+          </div>
+        </figcaption>
+      </figure>
+    </div>
+  );
 
-                <p>
-                  {painting.dimensions}
-                </p>
-                {!painting.placeholder &&
-                  <>
-                    <p>
-                      Original {painting.original ? 'Available' : 'Sold'}
-                    </p>
-                    <p>
-                      {painting.prints ? 'Prints Available' : ''}
-                    </p>
-                  </>
-                }
-                </div>
-              </div>
-            </figcaption>
-          </figure>
-        ))}
-      </section>
+  return (
+    <div className="paintings-photo-album">
+      <PhotoAlbum
+        photos={photos}
+        layout={"rows"}
+        targetRowHeight={360}
+        rowConstraints={
+          {maxPhotos: 5}
+        }
+        renderPhoto={NextJsImage}
+        onClick={(e, photo, idx) => {openModal(e, photo, idx)}}
+      />
       {showModal &&
         <ProductModal
           closeModal={closeModal}
@@ -72,3 +111,4 @@ export default function PaintingsInCollection ({paintings}) {
     </div>
   )
 }
+
