@@ -70,7 +70,7 @@ export default function Illustrations({ illustrations }) {
             />
           </div>
         <figcaption>
-          <div className="caption-container hover:cursor-pointer font-libre">
+          <div id="illustration-caption" className="caption-container hover:cursor-pointer font-libre">
             <h4 className="text-xl">
               {title.split('|')[0].trim()}
             </h4>
@@ -93,7 +93,10 @@ export default function Illustrations({ illustrations }) {
         layout={"rows"}
         targetRowHeight={360}
         rowConstraints={
-          {maxPhotos: 5}
+          {
+            minPhotos: 1,
+            maxPhotos: 3
+          }
         }
         renderPhoto={NextJsImage}
         onClick={(e, photo, idx) => {openModal(e, photo, idx)}}

@@ -42,9 +42,6 @@ a {
   box-sizing: border-box;
 }
 
-
-/* hover code from shopify */
-
 figure {
   position: relative;
 }
@@ -53,7 +50,7 @@ figure.hover-effect {
   margin: 0;
 }
 
-figure img {
+figure div {
   transition: .5s ease-in-out;
 }
 
@@ -77,12 +74,16 @@ figure.hover-effect .caption-container {
   color: #fff;
 }
 
+#illustration-caption {
+  width: 12rem;
+}
+
 figure.hover-effect:hover .caption-container {
   opacity: 1;
   transform: translate3d(0,0,0);
 }
 
-figure.hover-effect:hover > img {
+figure.hover-effect:hover > div {
   filter: brightness(0.5);
 }
 

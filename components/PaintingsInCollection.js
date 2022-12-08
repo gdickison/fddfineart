@@ -96,7 +96,10 @@ export default function ReactPhotoAlbumTest ({paintings}) {
         layout={"rows"}
         targetRowHeight={360}
         rowConstraints={
-          {maxPhotos: 5}
+          {
+            minPhotos: 1,
+            maxPhotos: 3
+          }
         }
         renderPhoto={NextJsImage}
         onClick={(e, photo, idx) => {openModal(e, photo, idx)}}
