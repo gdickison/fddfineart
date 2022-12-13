@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { client } from "../../lib/client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useStateContext } from "../../context/StateContext";
 import { Mousewheel, Navigation, Thumbs } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -8,25 +8,33 @@ import ProductDetailModal from "../../components/ProductDetailModal";
 import { urlFor } from "../../lib/client";
 import PrintDetails from "../../components/PrintDetails";
 
-function getWindowSize() {
-  const {innerWidth, innerHeight} = window;
-  return {innerWidth, innerHeight};
+const useWindowSize = (width) => {
+  const [targetReached, setTargetReached] = useState(true)
+
+  const updateTarget = useCallback((e => {
+    if(e.matches){
+      setTargetReached(false)
+    } else {
+      setTargetReached(true)
+    }
+  }), [])
+
+  useEffect(() => {
+    const media = window.matchMedia(`(max-width: ${width}px)`)
+    media.addEventListener('change', updateTarget)
+
+    if(media.matches){
+      setTargetReached(false)
+    }
+
+    return () => media.removeEventListener('change', updateTarget)
+  }, [updateTarget, width])
+
+  return targetReached
 }
 
 const ProductDetailsPage = ({productDetails, printOptions}) => {
-  const [windowSize, setWindowSize] = useState(getWindowSize());
-
-  useEffect(() => {
-    function handleWindowResize() {
-      setWindowSize(getWindowSize());
-    }
-
-    window.addEventListener('resize', handleWindowResize);
-
-    return () => {
-      window.removeEventListener('resize', handleWindowResize);
-    };
-  }, []);
+  const isBreakpoint = useWindowSize(768)
 
   const { addToCart } = useStateContext()
 
@@ -68,7 +76,7 @@ const ProductDetailsPage = ({productDetails, printOptions}) => {
         <div className="container mx-auto max-w-[1400px]">
           <div className="mx-auto flex flex-col md:flex-row justify-center gap-8 md:gap-16">
             <div className="md:w-1/2 m-auto flex flex-row-reverse">
-              {slides && slides.length > 1 && windowSize.innerWidth > 768
+              {slides && slides.length > 1 && isBreakpoint
                 ?
                   <>
                     <Swiper
