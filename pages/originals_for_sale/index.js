@@ -13,7 +13,7 @@ export default function Originals({originalPaintings}) {
 export const getServerSideProps = async () => {
 
   const originalPaintings = await client.fetch(
-    `*[_type == "collections" && title == "Originals For Sale"]{
+    `*[_type == "collections" && title == "Best of the West"]{
       "originals": paintings[]->{
         "id": _id,
         title,
