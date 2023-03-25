@@ -108,12 +108,18 @@ figure.hover-effect:hover > div {
 #swiper-custom > .swiper-button-next,
 #swiper-custom > .swiper-button-prev {
   position: absolute;
-  bottom: 0;
+  visibility: hidden;
+  bottom: 45%;
   top: auto;
   z-index: 15;
   background-size: 3rem;
   background-repeat: no-repeat;
   background-position: center;
+}
+
+#swiper-custom:hover .swiper-button-next,
+#swiper-custom:hover .swiper-button-prev {
+  visibility: visible;
 }
 
 #swiper-gallery > .swiper-button-next,

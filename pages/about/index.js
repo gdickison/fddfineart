@@ -26,8 +26,7 @@ const About = ({bio}) => {
           modules={[
             Autoplay,
             Lazy,
-            Navigation,
-            Pagination
+            Navigation
           ]}
           autoplay={{
             delay: 5000
@@ -39,7 +38,6 @@ const About = ({bio}) => {
           }}
           loop={true}
           navigation
-          pagination={{ clickable: true }}
           slidesPerView={1}
           spaceBetween={50}
         >
