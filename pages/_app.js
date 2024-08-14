@@ -17,6 +17,7 @@ function MyApp({ Component, pageProps }) {
     <div className="min-h-screen flex flex-col md:w-screen md:max-w-[1170px]">
       <Head>
         <title>Forrest Dickison Fine Art & Illustration</title>
+        <script defer data-domain="forrestdickison.com" src="https://plausible.io/js/script.js"></script>
       </Head>
       <StateContext>
         <HeroBanner/>
