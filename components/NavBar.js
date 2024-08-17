@@ -26,7 +26,7 @@ const NavBar = () => {
             {navMenuItems.map(item => {
               return (
                 <Link key={item.itemTitle} href={item.itemLink} legacyBehavior>
-                  <a className={`py-2 px-4 whitespace-nowrap text-sm lg:text-navland font-medium ${router.pathname === item.itemLink ? 'border-b border-gray-200' : ''}`}>
+                  <a className={`py-2 px-4 whitespace-nowrap text-sm lg:text-navland font-medium ${router.pathname === item.itemLink ? 'border-b border-gray-200' : ''}`} target={`${item.itemTitle === 'Newsletter' ? '_blank' : ''}`}>
                     {item.itemTitle}
                   </a>
                 </Link>
@@ -56,7 +56,7 @@ const NavBar = () => {
         leaveFrom="opacity-100 scale-100"
         leaveTo="opacity-0 scale-95"
       >
-        <nav focus className="absolute top-0 inset-x-0 transition transform origin-top-right md:hidden z-10 bg-gray-50">
+        <nav focus={true} className="absolute top-0 inset-x-0 transition transform origin-top-right md:hidden z-10 bg-gray-50">
           <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
             <div className="px-5">
               <div className="flex items-center justify-end">
@@ -73,7 +73,7 @@ const NavBar = () => {
               {navMenuItems.map(item => {
                 return (
                   <Link key={item.itemTitle} href={item.itemLink} legacyBehavior>
-                    <a className={`${router.pathname === item.itemLink ? 'bg-gray-200' : ''}`}>
+                    <a className={`${router.pathname === item.itemLink ? 'bg-gray-200' : ''}`} target={`${item.itemTitle === 'Newsletter' ? '_blank' : ''}`}>
                       {item.itemTitle}
                     </a>
                   </Link>
