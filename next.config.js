@@ -4,15 +4,15 @@ const nextConfig = {
   images: {
     domains: ['forrestdickison.com', 'cdn.sanity.io']
   },
-  async redirects() {
-    return [
-      {
-        source: '/',
-        destination: '/originals_for_sale',
-        permanent: true
-      }
-    ]
-  }
+  // async redirects() {
+  //   return [
+  //     {
+  //       source: '/',
+  //       destination: '/originals_for_sale',
+  //       permanent: true
+  //     }
+  //   ]
+  // }
   // images: {
   //   remotePatterns: [
   //     {

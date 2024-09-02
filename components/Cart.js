@@ -15,24 +15,24 @@ const Cart = () => {
     return a + b
   }, 0)
 
-  const handleCheckout = async () => {
-    const stripe = await getStripe()
-    const response = await fetch('/api/stripe', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({cartItems, cartTotalPrice})
-    })
+  // const handleCheckout = async () => {
+  //   const stripe = await getStripe()
+  //   const response = await fetch('/api/stripe', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify({cartItems, cartTotalPrice})
+  //   })
 
-    if(response.statusCode === 500){
-      return
-    }
+  //   if(response.statusCode === 500){
+  //     return
+  //   }
 
-    const data = await response.json()
-    toast.loading('Redirecting...')
-    stripe.redirectToCheckout({ sessionId: data.id })
-  }
+  //   const data = await response.json()
+  //   toast.loading('Redirecting...')
+  //   stripe.redirectToCheckout({ sessionId: data.id })
+  // }
 
   return (
     <div className="fixed inset-0 overflow-auto z-50">
@@ -106,7 +106,8 @@ const Cart = () => {
                 <p className="text-xs md:text-sm landscape:text-base text-gray-900">Price includes US taxes and US shipping</p>
               </div>
               <div className="flex justify-end space-x-4">
-                <button type="button" className="px-6 py-2 bg-gray-100 text-gray-800 border-2 hover:border-black hover:bg-black hover:text-gray-100 uppercase tracking-widest font-semibold" onClick={handleCheckout}>
+                {/* <button type="button" className="px-6 py-2 bg-gray-100 text-gray-800 border-2 hover:border-black hover:bg-black hover:text-gray-100 uppercase tracking-widest font-semibold" onClick={handleCheckout}> */}
+                <button type="button" className="px-6 py-2 bg-gray-100 text-gray-800 border-2 hover:border-black hover:bg-black hover:text-gray-100 uppercase tracking-widest font-semibold" onClick={() => alert('Sorry, this site is no longer accepting purchase requests')}>
                   Checkout
                 </button>
               </div>
